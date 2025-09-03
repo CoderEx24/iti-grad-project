@@ -59,6 +59,7 @@
         android:id="@+id/fragment_login_go_to_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onGoToSignup"
         android:text="Go to Signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
