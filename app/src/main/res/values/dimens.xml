@@ -3,5 +3,8 @@
     <dimen name="fragment_signup_textview_width">300dp</dimen>
     <dimen name="fragment_signup_textview_height">70dp</dimen>
 
+    <dimen name="fragment_login_textview_width">300dp</dimen>
+    <dimen name="fragment_login_textview_height">70dp</dimen>
+
     <dimen name="fragment_vertical_margin">16dp</dimen>
 </resources>

@@ -4,4 +4,7 @@
     <string name="fragment_signup_textview_name_label">Username</string>
     <string name="fragment_signup_button_signup">Signup</string>
     <string name="fragment_signup_button_back_to_login">Back to Login</string>
+
+    <string name="fragment_login_textview_login">Login</string>
+    <string name="fragment_login_textview_username">Username</string>
 </resources>
