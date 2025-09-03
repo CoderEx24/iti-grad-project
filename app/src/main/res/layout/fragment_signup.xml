@@ -59,24 +59,12 @@
 
     <Button
         android:id="@+id/fragment_signup_button_signup"
-        android:layout_width="165dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
         android:text="@string/fragment_signup_button_signup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_signup_confirmPassword" />
-
-    <Button
-        android:layout_width="161dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/fragment_signup_button_back_to_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_signup_button_signup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
