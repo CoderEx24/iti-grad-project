@@ -7,6 +7,8 @@
     <string name="fragment_signup_textview_password_hint">Password</string>
     <string name="fragment_signup_textview_confirm_password_hint">Confirm Password</string>
 
+    <string name="hello_blank_fragment">Hello Blk Fragment</string>
+
     <string name="fragment_login_textview_login">Login</string>
     <string name="fragment_login_textview_username_hint">Username</string>
     <string name="fragment_login_textview_login_text">Login</string>
