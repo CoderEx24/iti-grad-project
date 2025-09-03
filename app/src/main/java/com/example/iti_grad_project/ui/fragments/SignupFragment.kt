@@ -1,13 +1,12 @@
-package com.example.iti_grad_project
+package com.example.iti_grad_project.ui.fragments
 
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
 import android.text.TextWatcher
+import com.example.iti_grad_project.R
 
 class SignupFragment : Fragment(R.layout.fragment_signup) {
 
