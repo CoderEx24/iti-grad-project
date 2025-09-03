@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Ur Fav Meal</string>
     <string name="fragment_signup_signup_label">Signup</string>
-    <string name="fragment_signup_textview_name_label">Username</string>
+    <string name="fragment_signup_textview_username_label">Username</string>
     <string name="fragment_signup_button_signup">Signup</string>
     <string name="fragment_signup_button_back_to_login">Back to Login</string>
+    <string name="fragment_signup_textview_password_hint">Password</string>
+    <string name="fragment_signup_textview_confirm_password_hint">Confirm Password</string>
 
     <string name="fragment_login_textview_login">Login</string>
-    <string name="fragment_login_textview_username">Username</string>
+    <string name="fragment_login_textview_username_hint">Username</string>
+    <string name="fragment_login_textview_login_text">Login</string>
+    <string name="fragment_login_button_go_to_signup_text">Go to Signup</string>
+    <string name="fragment_login_textview_password_hint">Password</string>
 </resources>
