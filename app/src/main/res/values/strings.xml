@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Ur Fav Meal</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_signup_signup_label">Signup</string>
+    <string name="fragment_signup_textview_name_label">Username</string>
+    <string name="fragment_signup_button_signup">Signup</string>
+    <string name="fragment_signup_button_back_to_login">Back to Login</string>
 </resources>

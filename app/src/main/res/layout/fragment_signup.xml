@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignupFragment">
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="@string/fragment_signup_signup_label"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fragment_signup_username"
+        android:layout_width="@dimen/fragment_signup_textview_width"
+        android:layout_height="@dimen/fragment_signup_textview_height"
+        android:inputType="text"
+        android:text="@string/fragment_signup_textview_name_label"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_signup_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.26"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/fragment_signup_password"
+        android:layout_width="@dimen/fragment_signup_textview_width"
+        android:layout_height="@dimen/fragment_signup_textview_height"
+        android:autofillHints="Password"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_signup_confirmPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_signup_username" />
+
+    <EditText
+        android:id="@+id/fragment_signup_confirmPassword"
+        android:layout_width="@dimen/fragment_signup_textview_width"
+        android:layout_height="@dimen/fragment_signup_textview_height"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_signup_password" />
+
+    <Button
+        android:id="@+id/fragment_signup_button_signup"
+        android:layout_width="165dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/fragment_signup_button_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_signup_confirmPassword" />
+
+    <Button
+        android:layout_width="161dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/fragment_signup_button_back_to_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_signup_button_signup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
