@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
 import android.text.TextWatcher
+import android.widget.Button
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import com.example.iti_grad_project.R
@@ -17,6 +18,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val signupButton: Button = view.findViewById(R.id.fragment_signup_button_signup)
         val usernameTextView: TextView = view.findViewById(R.id.fragment_signup_username)
         val passwordTextView: TextView = view.findViewById(R.id.fragment_signup_password)
         val confirmPasswordTextView: TextView = view.findViewById(R.id.fragment_signup_confirmPassword)
@@ -43,5 +45,17 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
 
         passwordTextView.addTextChangedListener(afterTextChanged = passwordsMatchLambda)
         confirmPasswordTextView.addTextChangedListener(afterTextChanged = passwordsMatchLambda)
+
+        val enableSignupButtonLambda: (Editable?) -> Unit = {
+            signupButton.isEnabled = usernameTextView.text.isNotBlank() &&
+                    passwordTextView.text.isNotBlank() &&
+                    confirmPasswordTextView.text.isNotBlank() &&
+                    passwordTextView.text.contentEquals(confirmPasswordTextView.text)
+
+        }
+
+        usernameTextView.addTextChangedListener(afterTextChanged = enableSignupButtonLambda)
+        passwordTextView.addTextChangedListener(afterTextChanged = enableSignupButtonLambda)
+        confirmPasswordTextView.addTextChangedListener(afterTextChanged = enableSignupButtonLambda)
     }
 }
