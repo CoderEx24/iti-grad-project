@@ -10,10 +10,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import android.content.Context
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import com.example.iti_grad_project.R
 import androidx.navigation.findNavController
 import com.example.iti_grad_project.ui.viewmodels.AuthViewModel
+import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
 
@@ -41,5 +44,16 @@ class AuthActivity : AppCompatActivity() {
     fun onGoToSignup(view: View?) {
         val navController =  findNavController(R.id.fragmentContainerView)
         navController.navigate(R.id.action_loginFragment_to_signupFragment)
+    }
+
+    fun onSignup(view: View?) {
+        lifecycleScope.launch {
+            val result = authViewModel.register()
+            if (result) {
+                Toast.makeText(applicationContext, "Signup successful", Toast.LENGTH_LONG).show()
+            }
+
+            // finish()
+        }
     }
 }
