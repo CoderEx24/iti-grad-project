@@ -14,4 +14,11 @@
     <string name="fragment_login_textview_login_text">Login</string>
     <string name="fragment_login_button_go_to_signup_text">Go to Signup</string>
     <string name="fragment_login_textview_password_hint">Password</string>
+    <string name="recipe_of_the_day">Recipe of the day</string>
+    <string name="ready_to_cook">"Ready to cook ? "</string>
+    <string name="search_bar_hint">Recipe name..</string>
+    <string name="recipe_card_title">Title of recipe</string>
+    <string name="recipe_card_subhead">Subhead of recipe</string>
+    <string name="search_recipes">Search for recipes</string>
+    <string name="txt_random_recipes">Random recipes</string>
 </resources>
