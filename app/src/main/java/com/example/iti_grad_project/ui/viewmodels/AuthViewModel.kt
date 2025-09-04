@@ -1,7 +1,6 @@
 package com.example.iti_grad_project.ui.viewmodels
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -36,6 +35,8 @@ class AuthViewModel(
             uiState.postValue(state!!.copy(password = value))
         }
         get() = uiState.value!!.password
+
+    suspend fun register() = repository.register(username, "dummy@email.com", password)
 
     companion object {
         // TODO: See if there's a better way to do this
