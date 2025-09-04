@@ -20,7 +20,6 @@ class AuthViewModel(
     private val repository: AuthRepository
 ): ViewModel() {
     val uiState: MutableLiveData<AuthActivityUiState> = MutableLiveData(AuthActivityUiState())
-        private set
 
     var username: String
         set(value) {
