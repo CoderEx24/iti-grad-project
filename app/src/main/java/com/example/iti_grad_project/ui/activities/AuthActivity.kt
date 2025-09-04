@@ -49,11 +49,14 @@ class AuthActivity : AppCompatActivity() {
     fun onSignup(view: View?) {
         lifecycleScope.launch {
             val result = authViewModel.register()
-            if (result) {
-                Toast.makeText(applicationContext, "Signup successful", Toast.LENGTH_LONG).show()
-            }
+            Toast.makeText(applicationContext, "Signup is $result", Toast.LENGTH_LONG).show()
+        }
+    }
 
-            // finish()
+    fun onLogin(view: View?) {
+        lifecycleScope.launch {
+            val result = authViewModel.login()
+            Toast.makeText(applicationContext, "Login is $result", Toast.LENGTH_LONG).show()
         }
     }
 }

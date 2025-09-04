@@ -48,6 +48,7 @@
         android:id="@+id/fragment_login_button_login"
         android:layout_width="110dp"
         android:layout_height="53dp"
+        android:onClick="onLogin"
         android:text="@string/fragment_login_textview_login_text"
         app:layout_constraintBottom_toTopOf="@+id/fragment_login_go_to_signup"
         app:layout_constraintEnd_toEndOf="parent"
