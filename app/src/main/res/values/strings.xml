@@ -21,4 +21,8 @@
     <string name="recipe_card_subhead">Subhead of recipe</string>
     <string name="search_recipes">Search for recipes</string>
     <string name="txt_random_recipes">Random recipes</string>
+    <string name="no_favorites_yet">No favorites yet</string>
+    <string name="favorite_recipes">Favorite Recipes</string>
+    <string name="remove_favorite">Remove item</string>
+    <string name="recipe_title">Recipe Title</string>
 </resources>
