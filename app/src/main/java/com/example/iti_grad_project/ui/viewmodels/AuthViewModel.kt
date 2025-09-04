@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.lifecycle.viewmodel.initializer
+import com.example.iti_grad_project.data.local.AppDatabase
 import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.repositories.AuthRepository
 
@@ -44,8 +45,8 @@ class AuthViewModel(
                 val context = this[CONTEXT_KEY]
                 AuthViewModel(
                     AuthRepository(
-                        TODO(),
-                        PreferenceManager(context!!)
+                        AppDatabase.getDatabase(context!!).userDao(),
+                        PreferenceManager(context)
                     )
                 )
             }
