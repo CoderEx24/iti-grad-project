@@ -26,21 +26,21 @@ class AuthRepository(
     }
 
 
-    suspend fun login(username: String, password: String): String {
+    suspend fun login(username: String, password: String): Boolean {
         return try {
             val user = userDao.getUser(username)
             if(user == null)
-                return "Error in Credentials"
+                return false
 
-            if(user.password != password)
-                return "Error in Credentials"
+            if(user.password.contentEquals(password))
+                return false
 
             prefs.setUsername(username)
             prefs.setLoggedIn(true)
 
-            "Login Done successfully"
+            true
         } catch (e: Exception) {
-            "Error occurred"
+            false
         }
     }
 
