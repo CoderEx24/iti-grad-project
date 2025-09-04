@@ -29,8 +29,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
             authViewModel.password = it?.toString() ?: ""
         }
 
-        val passwordsMatchWatcher = object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
+        val passwordsMatchLambda: (Editable?) -> Unit = {
                 val password = passwordTextView.text
                 val confirmPassword = confirmPasswordTextView.text
 
@@ -40,27 +39,9 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                 } else {
                     confirmPasswordTextView.error = null
                 }
-            }
-
-            override fun beforeTextChanged(
-                p0: CharSequence?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                p0: CharSequence?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-            }
         }
 
-        passwordTextView.addTextChangedListener(passwordsMatchWatcher)
-        confirmPasswordTextView.addTextChangedListener(passwordsMatchWatcher)
+        passwordTextView.addTextChangedListener(afterTextChanged = passwordsMatchLambda)
+        confirmPasswordTextView.addTextChangedListener(afterTextChanged = passwordsMatchLambda)
     }
-
 }
