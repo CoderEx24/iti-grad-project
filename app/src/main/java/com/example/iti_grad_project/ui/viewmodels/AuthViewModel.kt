@@ -37,6 +37,8 @@ class AuthViewModel(
 
     suspend fun register() = repository.register(username, "dummy@email.com", password)
 
+    suspend fun login() = repository.login(username, password)
+
     companion object {
         // TODO: See if there's a better way to do this
         val CONTEXT_KEY = object : CreationExtras.Key<Context> {}
