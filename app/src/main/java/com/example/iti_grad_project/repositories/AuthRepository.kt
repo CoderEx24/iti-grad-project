@@ -9,19 +9,19 @@ class AuthRepository(
     private val userDao: UserDao,
     private val prefs: PreferenceManager
 ) {
-    suspend fun register(username: String, email: String, password: String): String {
+    suspend fun register(username: String, email: String, password: String): Boolean {
         return try {
             if(userDao.getUser(username) != null)
-                return "User already existed"
+                return false
 
             val user = User(username, email, password)
             userDao.registerUser(user)
             prefs.setLoggedIn(true)
             prefs.setUsername(username)
 
-            "Registration Done Successfully"
+            true
         } catch (e: Exception) {
-            "Error occurred"
+            false
         }
     }
 
