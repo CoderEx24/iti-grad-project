@@ -1,10 +1,14 @@
 package com.example.iti_grad_project.ui.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.viewmodel.initializer
+import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.repositories.AuthRepository
 
 data class AuthActivityUiState(
@@ -33,18 +37,17 @@ class AuthViewModel(
         get() = uiState.value!!.password
 
     companion object {
-        val Factory = object : ViewModelProvider.Factory {
-
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                val viewModel = AuthViewModel(
+        // TODO: See if there's a better way to do this
+        val CONTEXT_KEY = object : CreationExtras.Key<Context> {}
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val context = this[CONTEXT_KEY]
+                AuthViewModel(
                     AuthRepository(
                         TODO(),
-                        TODO()
+                        PreferenceManager(context!!)
                     )
                 )
-
-                return viewModel as T
             }
         }
     }
