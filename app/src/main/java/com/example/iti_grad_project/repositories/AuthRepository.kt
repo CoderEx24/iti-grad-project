@@ -32,7 +32,7 @@ class AuthRepository(
             if(user == null)
                 return false
 
-            if(user.password.contentEquals(password))
+            if(!user.password.contentEquals(password))
                 return false
 
             prefs.setUsername(username)
