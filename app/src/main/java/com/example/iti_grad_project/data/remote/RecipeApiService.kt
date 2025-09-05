@@ -1,5 +1,6 @@
 package com.example.iti_grad_project.data.remote
 
+import com.example.iti_grad_project.utils.baseUrl
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -9,7 +10,7 @@ import retrofit2.http.Query
 object RecipeApiService: RecipeApiImp {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://dummyjson.com")
+        .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -17,53 +18,43 @@ object RecipeApiService: RecipeApiImp {
 
 
     override suspend fun searchByName(name: String): RecipeResponse {
-        services.searchByName(name)
-        TODO("Not yet implemented")
+        return services.searchByName(name)
     }
 
     override suspend fun searchMealByFirstLetter(letter: Char): RecipeResponse {
-        services.searchMealByFirstLetter(letter)
-        TODO("Not yet implemented")
+        return services.searchMealByFirstLetter(letter)
     }
 
     override suspend fun searchById(id: String): RecipeResponse {
-        services.searchById(id)
-        TODO("Not yet implemented")
+        return services.searchById(id)
     }
 
     override suspend fun getRandomMeal(): RecipeResponse {
-        services.getRandomMeal()
-        TODO("Not yet implemented")
+        return services.getRandomMeal()
     }
 
     override suspend fun getAllCategories(): CategoryResponse {
-        services.getAllCategories()
-        TODO("Not yet implemented")
+        return services.getAllCategories()
     }
 
     override suspend fun getAllAreas(): AreaResponse {
-        services.getAllAreas()
-        TODO("Not yet implemented")
+        return services.getAllAreas()
     }
 
     override suspend fun getAllIngredients(): IngredientResponse {
-        services.getAllIngredients()
-        TODO("Not yet implemented")
+        return services.getAllIngredients()
     }
 
     override suspend fun getCategoryMeals(category: String): RecipeResponse {
-        services.getCategoryMeals(category)
-        TODO("Not yet implemented")
+        return services.getCategoryMeals(category)
     }
 
     override suspend fun getIngredientMeals(ingredient: String): RecipeResponse {
-        services.getIngredientMeals(ingredient)
-        TODO("Not yet implemented")
+        return services.getIngredientMeals(ingredient)
     }
 
     override suspend fun getAreaMeals(area: String): RecipeResponse {
-        services.getAreaMeals(area)
-        TODO("Not yet implemented")
+        return services.getAreaMeals(area)
     }
 }
 
