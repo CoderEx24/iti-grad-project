@@ -56,6 +56,10 @@ object RecipeApiService: RecipeApiImp {
     override suspend fun getAreaMeals(area: String): RecipeResponse {
         return services.getAreaMeals(area)
     }
+
+    override fun getIngredientsAndItsMeasures(meal: Meal): ArrayList<Pair<String, String>> {
+        return services.getIngredientsAndItsMeasures(meal)
+    }
 }
 
 interface RecipeApiImp{
@@ -90,4 +94,5 @@ interface RecipeApiImp{
 
     suspend fun getAreaMeals(area: String): RecipeResponse
 
+    fun getIngredientsAndItsMeasures(meal: Meal): ArrayList<Pair<String, String>>
 }

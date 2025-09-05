@@ -24,23 +24,32 @@ import kotlinx.coroutines.launch
 data class HomeUiState(
     val recipeOfTheDay: Meal,
     val listOfRandomRecipes: List<Meal>
+    //val mealIngredientsAndMeasurements: MutableList<List<Pair<String, String>>>
 )
 
 class HomeViewModel(var repo: RecipeRepository): ViewModel() {
     val apiData = MutableLiveData<HomeUiState>()
     lateinit private var singleMealResponse: RecipeResponse
     private var randomMeals = mutableListOf<Meal>()
-
+    //lateinit private var mealIngredientsAndMeasurements: MutableList<List<Pair<String, String>>>
     fun fetchRecipes(dayChanged: Boolean){
         viewModelScope.launch {
             try{
                 if(dayChanged == true) {
                     singleMealResponse = repo.getRandomMeal()
+                    //mealIngredientsAndMeasurements.add(repo.getIngredientsAndItsMeasures(singleMealResponse.meals[0]))
                 }
                 for(i in 1..10) {
                     randomMeals.add(repo.getRandomMeal().meals[0])
+                    val meal = randomMeals.last()
+                    //mealIngredientsAndMeasurements.add(repo.getIngredientsAndItsMeasures(meal))
                 }
-                apiData.postValue(HomeUiState(singleMealResponse.meals[0], randomMeals))
+                apiData.postValue(HomeUiState(
+                    singleMealResponse.meals[0],
+                    randomMeals
+                    //mealIngredientsAndMeasurements
+
+                ))
                 Log.i("MEALS", "single meal: ${singleMealResponse}")
             }
             catch(e: Exception)

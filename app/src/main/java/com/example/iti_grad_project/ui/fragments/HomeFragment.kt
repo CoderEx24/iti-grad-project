@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iti_grad_project.data.remote.Meal
@@ -43,11 +44,12 @@ class HomeFragment : Fragment() {
 
 
         val rv_recipes = view.findViewById<RecyclerView>(R.id.rv_random_recipes)
+
         val recipeAdapter = RecipesAdapter(listOf())
         { recipe ->
-            var bundle = Bundle()
-            bundle.putSerializable()
-            findNavController().navigate
+            val bundle = Bundle()
+            bundle.putParcelable("meal", recipe)
+            findNavController().navigate(R.id.recipeDetailsFragment, bundle)
         }
         rv_recipes.adapter = recipeAdapter
 
