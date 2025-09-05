@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
@@ -49,14 +50,22 @@ class AuthActivity : AppCompatActivity() {
     fun onSignup(view: View?) {
         lifecycleScope.launch {
             val result = authViewModel.register()
-            Toast.makeText(applicationContext, "Signup is $result", Toast.LENGTH_LONG).show()
+            if (result) goToRecipeActivity()
+            else Toast.makeText(this@AuthActivity, "Signup Failed", Toast.LENGTH_LONG).show()
         }
     }
 
     fun onLogin(view: View?) {
         lifecycleScope.launch {
             val result = authViewModel.login()
-            Toast.makeText(applicationContext, "Login is $result", Toast.LENGTH_LONG).show()
+            if (result) goToRecipeActivity()
+            else Toast.makeText(this@AuthActivity, "Login Failed", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun goToRecipeActivity() {
+        val intent = Intent(this, RecipeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
