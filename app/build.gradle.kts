@@ -61,4 +61,5 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.material)
     implementation(libs.recyclerview)
+    implementation(libs.glide)
 }
