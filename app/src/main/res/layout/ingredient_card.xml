@@ -25,11 +25,22 @@
             android:id="@+id/tvIngredientName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prawns"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="14sp"
             android:layout_marginTop="6dp"
-            android:textAlignment="center" />
+            android:fontFamily="@font/poppins_medium"
+            android:text="Prawns"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMeasurement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Prawns"
+            android:textAlignment="center"
+            android:textSize="12sp" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
