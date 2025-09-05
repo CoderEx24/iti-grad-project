@@ -6,15 +6,15 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/home"
         android:title="Home"
-        app:itemIconTint="@null"/>
+        />
     <item
         android:id="@+id/favoritesFragment"
         android:icon="@drawable/favorite"
         android:title="Favorites"
-        app:itemIconTint="@null"/>
+        />
     <item
         android:id="@+id/accountFragment"
         android:icon="@drawable/customer"
         android:title="Account"
-        app:itemIconTint="@null"/>
+        />
 </menu>

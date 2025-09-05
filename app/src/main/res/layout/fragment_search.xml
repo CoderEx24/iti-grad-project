@@ -10,10 +10,12 @@
     <!-- Search Bar -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_bar_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Search recipes"
+        android:hint="@string/search_recipes"
+        app:boxStrokeColor="?attr/colorOutline"
+        app:hintTextColor="?attr/colorOnSurfaceVariant"
         app:boxCornerRadiusTopStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
@@ -28,7 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionSearch"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="?attr/colorOnSurface"
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Filter Row -->
@@ -47,51 +51,63 @@
         <!-- Category -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/category_filter"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Category"
+            android:hint="@string/search_category"
+            app:boxStrokeColor="?attr/colorOutline"
+            app:hintTextColor="?attr/colorOnSurfaceVariant"
             android:layout_marginEnd="8dp">
 
             <AutoCompleteTextView
                 android:id="@+id/et_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textColor="?attr/colorOnSurface"
+                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Country -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/country_filter"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Country"
+            android:hint="@string/search_country"
+            app:boxStrokeColor="?attr/colorOutline"
+            app:hintTextColor="?attr/colorOnSurfaceVariant"
             android:layout_marginEnd="8dp">
 
             <AutoCompleteTextView
                 android:id="@+id/et_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textColor="?attr/colorOnSurface"
+                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Ingredient -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ingredient_filter"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Ingredient">
+            android:hint="@string/search_ingredient"
+            app:boxStrokeColor="?attr/colorOutline"
+            app:hintTextColor="?attr/colorOnSurfaceVariant">
 
             <AutoCompleteTextView
                 android:id="@+id/et_ingredient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textColor="?attr/colorOnSurface"
+                 />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -103,6 +119,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:padding="16dp"
+        android:background="?attr/colorSurface"
         app:layout_constraintTop_toBottomOf="@id/filter_row"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

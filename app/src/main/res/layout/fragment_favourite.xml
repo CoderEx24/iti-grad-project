@@ -5,7 +5,7 @@
     android:id="@+id/favorite_recipes_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
+    android:background="@color/md_theme_background"
     tools:context=".ui.fragments.FavouriteFragment">
 
     <!-- Title -->
@@ -16,7 +16,7 @@
         android:padding="16dp"
         android:text="@string/favorite_recipes"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        android:textColor="?attr/colorOnSurface"
+        android:textColor="@color/md_theme_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvFavoritesTitle"
         tools:listitem="@layout/favourite_item" />
 
-    <!-- Empty state (overlays RecyclerView) -->
+    <!-- Empty state -->
     <LinearLayout
         android:id="@+id/emptyStateContainer"
         android:layout_width="0dp"
@@ -46,10 +46,8 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvEmptyMessage"
@@ -57,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/no_favorites_yet"
             android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorOnSurface"
+            android:textColor="@color/md_theme_onBackground"
             android:paddingTop="12dp" />
 
     </LinearLayout>

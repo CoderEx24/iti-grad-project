@@ -39,4 +39,7 @@
     <string name="measurements">Measurements</string>
     <string name="instructions">Instructions</string>
     <string name="recipe_instructions">Step by step instructions will appear here...</string>
+    <string name="search_ingredient">ingredients</string>
+    <string name="search_country">country</string>
+    <string name="search_category">category</string>
 </resources>
