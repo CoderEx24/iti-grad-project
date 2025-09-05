@@ -3,7 +3,6 @@ package com.example.iti_grad_project.repositories
 import com.example.iti_grad_project.data.local.User
 import com.example.iti_grad_project.data.local.UserDao
 import com.example.iti_grad_project.data.prefs.PreferenceManager
-import okhttp3.internal.connection.Exchange
 
 class AuthRepository(
     private val userDao: UserDao,
