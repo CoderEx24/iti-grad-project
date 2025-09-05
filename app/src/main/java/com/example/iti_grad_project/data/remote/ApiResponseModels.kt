@@ -1,9 +1,13 @@
 package com.example.iti_grad_project.data.remote
 
+import android.os.Parcel
+import android.os.Parcelable
+import kotlinx.serialization.Serializable
+import java.io.Serial
+
 data class RecipeResponse(
     val meals: List<Meal>
 )
-
 data class Meal(
     val idMeal: String,
     val strMeal: String,

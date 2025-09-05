@@ -15,7 +15,7 @@ import com.example.iti_grad_project.data.remote.Meal
 
 class RecipesAdapter(
     private var data: List<Meal>,
-    //private val onShowMoreClick: (Meal) -> Unit
+    private val onShowMoreClick: (Meal) -> Unit
 ) : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -40,8 +40,7 @@ class RecipesAdapter(
 
         // Handle Show More button click
         holder.btnShowMore.setOnClickListener {
-            //onShowMoreClick(recipe)
-            Toast.makeText(holder.itemView.context, "It is working!!", Toast.LENGTH_SHORT).show()
+            onShowMoreClick(recipe)
         }
     }
 

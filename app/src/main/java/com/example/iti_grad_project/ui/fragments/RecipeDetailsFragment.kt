@@ -17,5 +17,4 @@ class RecipeDetailsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_recipe_details, container, false)
     }
 
-
 }
