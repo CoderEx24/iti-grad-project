@@ -39,7 +39,9 @@ class RecipeRepository(
 
     suspend fun deleteFavourite(recipe: FavoriteRecipe) = dao.deleteFavorite(recipe)
 
-    suspend fun getAllFavourites(username: String) = dao.getAllFavorites(username)
+    fun getAllFavourites(username: String) = dao.getAllFavorites(username)
+
+    fun getIngredientsAndItsMeasures(meal: Meal): ArrayList<Pair<String, String>> = api.getIngredientsAndItsMeasures(meal)
 
     suspend fun isFavourite(username: String, idMeal: String) = dao.isFavourite(username, idMeal)
 
