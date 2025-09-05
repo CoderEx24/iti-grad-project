@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,16 +11,144 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:spacing="12dp">
+        android:orientation="vertical">
 
-        <!-- YouTube-like video/thumbnail preview -->
+
         <FrameLayout
+            android:id="@+id/flImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="?attr/colorSurfaceVariant"
-            android:foreground="?attr/selectableItemBackground">
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_marginBottom="16dp">
+
+            <!-- Top Recipe Image -->
+            <ImageView
+                android:id="@+id/ivRecipeImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/meal_image"
+                android:background="?attr/colorSurfaceVariant"
+                android:foreground="?attr/selectableItemBackground" />
+
+            <!-- Favorite button -->
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/favorite"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_gravity="top|end"
+                android:contentDescription="@string/favoriteBtnDescription"
+                android:padding="8dp"
+                android:layout_margin="8dp" />
+        </FrameLayout>
+        <!-- Title + Info -->
+        <TextView
+            android:id="@+id/tvMealName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meal_name"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="8dp"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvCategoryArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meal_category"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Ingredients Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ingredients"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_gravity="center"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:nestedScrollingEnabled="false"
+            android:layout_gravity="center"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Measurements Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/measurements"
+            android:layout_gravity="center"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp" />
+
+        <GridLayout
+            android:id="@+id/glMeasurements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:rowOrderPreserved="false"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Instructions Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/instructions"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/recipe_instructions"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/colorOnSurface"
+            android:lineSpacingExtra="4dp"
+            android:paddingBottom="12dp" />
+
+        <!-- Video window with favorite button -->
+        <FrameLayout
+            android:id="@+id/flVideo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="?attr/colorSurfaceVariant"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_marginBottom="16dp">
+            <WebView
+                android:id="@+id/wvYouTube"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <ImageView
                 android:id="@+id/ivMealThumb"
@@ -34,96 +163,7 @@
                 android:layout_height="64dp"
                 android:src="@drawable/play"
                 android:layout_gravity="center" />
+
         </FrameLayout>
-
-        <!-- Title + Info -->
-        <TextView
-            android:id="@+id/tvMealName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/meal_name"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_marginTop="8dp"
-            android:textColor="?attr/colorOnSurface"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/tvCategoryArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/meal_category"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:layout_marginBottom="16dp"
-            android:textAlignment="center" />
-
-        <!-- Ingredients Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ingredients"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="6dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvIngredients"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            android:nestedScrollingEnabled="false"
-            android:background="?attr/colorSurfaceVariant"
-            android:padding="8dp"
-            android:clipToPadding="false" />
-
-        <!-- Measurements Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/measurements"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="6dp" />
-
-        <GridLayout
-            android:id="@+id/glMeasurements"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:alignmentMode="alignMargins"
-            android:rowOrderPreserved="false"
-            android:layout_marginBottom="16dp"
-            android:background="?attr/colorSurfaceVariant"
-            android:padding="8dp"
-            android:clipToPadding="false" />
-
-        <!-- Instructions Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/instructions"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="6dp" />
-
-        <TextView
-            android:id="@+id/tvInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/recipe_instructions"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorOnSurface"
-            android:lineSpacingExtra="4dp"
-            android:paddingBottom="12dp" />
-
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
