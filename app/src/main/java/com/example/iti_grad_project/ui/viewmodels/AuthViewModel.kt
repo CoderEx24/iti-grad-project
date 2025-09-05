@@ -39,6 +39,9 @@ class AuthViewModel(
 
     suspend fun login() = repository.login(username, password)
 
+    val isLoggedIn: Boolean
+        get() = repository.isLoggedIn()
+
     companion object {
         // TODO: See if there's a better way to do this
         val CONTEXT_KEY = object : CreationExtras.Key<Context> {}
