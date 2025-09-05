@@ -42,4 +42,5 @@
     <string name="search_ingredient">ingredients</string>
     <string name="search_country">country</string>
     <string name="search_category">category</string>
+    <string name="favoriteBtnDescription">Add recipe to favorites</string>
 </resources>
