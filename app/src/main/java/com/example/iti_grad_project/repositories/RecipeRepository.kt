@@ -2,6 +2,7 @@ package com.example.iti_grad_project.repositories
 
 import com.example.iti_grad_project.data.local.FavoriteRecipe
 import com.example.iti_grad_project.data.local.RecipeDao
+import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.data.remote.RecipeApi
 import com.example.iti_grad_project.data.remote.RecipeApiImp
 
@@ -38,6 +39,8 @@ class RecipeRepository(
 
     suspend fun deleteFavourite(recipe: FavoriteRecipe) = dao.deleteFavorite(recipe)
 
-    suspend fun getAllFavourites(username: String) = dao.getAllFavorites(username)
+    fun getAllFavourites(username: String) = dao.getAllFavorites(username)
+
+    fun getIngredientsAndItsMeasures(meal: Meal): ArrayList<Pair<String, String>> = api.getIngredientsAndItsMeasures(meal)
 
 }

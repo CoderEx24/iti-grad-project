@@ -1,13 +1,11 @@
 package com.example.iti_grad_project.data.remote
 
-import android.os.Parcel
 import android.os.Parcelable
-import kotlinx.serialization.Serializable
-import java.io.Serial
-
+import kotlinx.parcelize.Parcelize
 data class RecipeResponse(
     val meals: List<Meal>
 )
+@Parcelize
 data class Meal(
     val idMeal: String,
     val strMeal: String,
@@ -66,7 +64,7 @@ data class Meal(
     val strImageSource: String?,
     val strCreativeCommonsConfirmed: String?,
     val dateModified: String?
-)
+) : Parcelable
 
 data class CategoryResponse(
     val categories: List<String>
