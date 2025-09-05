@@ -3,10 +3,11 @@ package com.example.iti_grad_project.repositories
 import com.example.iti_grad_project.data.local.FavoriteRecipe
 import com.example.iti_grad_project.data.local.RecipeDao
 import com.example.iti_grad_project.data.remote.RecipeApi
+import com.example.iti_grad_project.data.remote.RecipeApiImp
 
 
 class RecipeRepository(
-    private val api: RecipeApi,
+    private val api: RecipeApiImp,
     private val dao: RecipeDao
 ) {
 
