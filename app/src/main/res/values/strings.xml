@@ -30,4 +30,13 @@
     <string name="sign_out">Sign Out</string>
     <string name="username">insert username</string>
     <string name="about">About</string>
+    <string name="show_more">Show more</string>
+    <string name="ingredient_image">Ingredient image description</string>
+    <string name="meal_image">meal image description goes here</string>
+    <string name="meal_name">Meal name goes here</string>
+    <string name="meal_category">Seafood • French</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="measurements">Measurements</string>
+    <string name="instructions">Instructions</string>
+    <string name="recipe_instructions">Step by step instructions will appear here...</string>
 </resources>

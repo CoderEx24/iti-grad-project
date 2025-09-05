@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:focusable="false"
+            android:focusable="true"
             android:cursorVisible="false"
             android:clickable="true"/>
 
