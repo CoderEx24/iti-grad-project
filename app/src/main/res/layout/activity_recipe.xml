@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.RecipeActivity">
+    tools:context=".ui.activities.RecipeActivity"
+    >
 
     <include
         layout="@layout/content_main"

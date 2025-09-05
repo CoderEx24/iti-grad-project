@@ -25,4 +25,9 @@
     <string name="favorite_recipes">Favorite Recipes</string>
     <string name="remove_favorite">Remove item</string>
     <string name="recipe_title">Recipe Title</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="about_app">App created by: Your Name\nVersion 1.0</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="username">insert username</string>
+    <string name="about">About</string>
 </resources>
