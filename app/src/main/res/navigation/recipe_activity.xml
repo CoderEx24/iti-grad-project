@@ -48,4 +48,9 @@
         android:name="com.example.iti_grad_project.ui.fragments.RecipeDetailsFragment"
         android:label="Recipe Details"
         tools:layout="@layout/fragment_recipe_details" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.iti_grad_project.ui.fragments.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

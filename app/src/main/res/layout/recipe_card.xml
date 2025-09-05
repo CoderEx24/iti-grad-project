@@ -20,7 +20,8 @@
                 android:id="@+id/ivRecipeImage"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                app:tint="@null"/>
 
             <TextView
                 android:id="@+id/tvRecipeTitle"
