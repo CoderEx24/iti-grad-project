@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.RecipeDetailsFragment">
+    android:fillViewport="true"
+    android:padding="12dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:spacing="12dp">
 
-</FrameLayout>
+        <!-- YouTube-like video/thumbnail preview -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/darker_gray"
+            android:foreground="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/ivMealThumb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/meal_image" />
+
+            <ImageView
+                android:id="@+id/ivPlayButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/play"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <!-- Title + Info -->
+        <TextView
+            android:id="@+id/tvMealName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meal_name"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:fontFamily="@font/Poppins_Bold"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvCategoryArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meal_category"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="center" />
+
+        <!-- Ingredients Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ingredients"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/Poppins_Medium"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- Measurements Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/measurements"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/Poppins_Medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <GridLayout
+            android:id="@+id/glMeasurements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:rowOrderPreserved="false"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Instructions Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/Poppins_Medium"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recipe_instructions"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:lineSpacingExtra="4dp"
+            android:paddingBottom="12dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
