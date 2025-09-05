@@ -36,9 +36,11 @@ class RecipeDetailsViewModel(val repo: RecipeRepository): ViewModel() {
                 val response = repo.getIngredientsAndItsMeasures(meal)
                 for(i in response)
                 {
-                   ingredients.add(ingredientDetails(i.first, i.second, "$imageUrl${i.first}"))
+                    Log.i("INGREDIENTS", "fetchDetails: $imageUrl${i.first}")
+                   ingredients.add(ingredientDetails(i.first, i.second, "$imageUrl${i.first}.png"))
                 }
                 mealDetails.postValue(DetailsUiState(ingredients))
+
             }
             catch(e: Exception){
                 Log.i("ERROR", "ERROR at fetchDetails: ${e.message} ")

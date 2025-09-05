@@ -30,6 +30,8 @@ class IngredientsAdapter(
         // Set title
         holder.tvIngredientTitle.text = ingredientDetails.ingredientTitle
 
+        holder.tvMeasurement.text = ingredientDetails.measurement
+
         // Load image with Glide
         Glide.with(holder.itemView.context)
             .load(ingredientDetails.imageSrc)
@@ -37,6 +39,8 @@ class IngredientsAdapter(
             .error(R.drawable.missing_image)
             .centerCrop()
             .into(holder.ivIngredientImage)
+
+
     }
 
     override fun getItemCount() = data.size
@@ -51,6 +55,8 @@ class IngredientsAdapter(
 
         val ivIngredientImage: ImageView = itemView.findViewById(R.id.ivIngredient)
         val tvIngredientTitle: TextView = itemView.findViewById(R.id.tvIngredientName)
+
+        val tvMeasurement: TextView = itemView.findViewById(R.id.tvMeasurement)
     }
 }
 
