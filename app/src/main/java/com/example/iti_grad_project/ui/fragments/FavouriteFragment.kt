@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.view.isEmpty
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iti_grad_project.R
@@ -15,16 +19,32 @@ import com.example.iti_grad_project.data.local.RecipeDao
 import com.example.iti_grad_project.data.remote.RecipeApi
 import com.example.iti_grad_project.data.remote.RecipeResponse
 import com.example.iti_grad_project.repositories.RecipeRepository
+import com.example.iti_grad_project.ui.adapters.FavouriteAdapter
+import com.example.iti_grad_project.ui.adapters.RecipesAdapter
+import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
+import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
+import com.example.iti_grad_project.utils.onRemoveClick
+import com.example.iti_grad_project.utils.onShowMoreClick
 
 class FavouriteFragment : Fragment() {
     lateinit var favoritesList: List<FavoriteRecipe>
     lateinit var rvFavorites: RecyclerView
     lateinit var emptyStateContainer: LinearLayout
+
+    lateinit var viewModel: FavouriteViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
+        viewModel = ViewModelProvider.create(
+            this as ViewModelStoreOwner,
+            factory = FavouriteViewModel.Factory,
+            extras = MutableCreationExtras().apply {
+                set(FavouriteViewModel.CONTEXT_KEY, requireContext())
+            }
+        )[FavouriteViewModel::class]
 
         return inflater.inflate(R.layout.fragment_favourite, container, false)
     }
@@ -33,6 +53,7 @@ class FavouriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Get favorite recipes and insert into favoritesList
+
 
         favoritesList = listOf()
 
@@ -45,5 +66,20 @@ class FavouriteFragment : Fragment() {
             rvFavorites.visibility = View.VISIBLE
             emptyStateContainer.visibility = View.GONE
         }
+
+
+        val favoriteAdapter = FavouriteAdapter(favoritesList)
+            { recipe ->
+                onRemoveClick(this, recipe)
+            }
+
+        rvFavorites.adapter = favoriteAdapter
+        rvFavorites.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        viewModel.apiData.observe(viewLifecycleOwner) {
+            favoriteAdapter.updateData(it.listOfFavouriteRecipes)
+        }
+
+        viewModel.fetchFavourites()
     }
 }

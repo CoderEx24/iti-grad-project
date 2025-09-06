@@ -41,6 +41,8 @@ class RecipeRepository(
 
     fun getAllFavourites(username: String) = dao.getAllFavorites(username)
 
+    fun isFavourite(username: String, idMeal: String) = dao.isFavourite(username, idMeal)
+
     fun getIngredientsAndItsMeasures(meal: Meal): ArrayList<Pair<String, String>> = api.getIngredientsAndItsMeasures(meal)
 
 }

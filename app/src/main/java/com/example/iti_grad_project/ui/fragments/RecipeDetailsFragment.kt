@@ -24,13 +24,18 @@ import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.iti_grad_project.R
+import com.example.iti_grad_project.data.local.FavoriteRecipe
+import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
+import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
 class RecipeDetailsFragment : Fragment() {
 
     lateinit var viewModel: RecipeDetailsViewModel
+
+    lateinit var favViewModel: FavouriteViewModel
 
     // Views as lateinit properties
     private lateinit var ivRecipe: ImageView
@@ -43,6 +48,8 @@ class RecipeDetailsFragment : Fragment() {
     private lateinit var rvIngredients: RecyclerView
     private lateinit var ingredientAdapter: IngredientsAdapter
 
+    private lateinit var prefs: PreferenceManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +61,14 @@ class RecipeDetailsFragment : Fragment() {
                 set(RecipeDetailsViewModel.CONTEXT_KEY, requireContext())
             }
         )[RecipeDetailsViewModel::class]
+
+        favViewModel = ViewModelProvider.create(
+            this as ViewModelStoreOwner,
+            factory = FavouriteViewModel.Factory,
+            extras = MutableCreationExtras().apply {
+                set(FavouriteViewModel.CONTEXT_KEY, requireContext())
+            }
+        )[FavouriteViewModel::class]
 
         return inflater.inflate(R.layout.fragment_recipe_details, container, false)
     }
@@ -125,16 +140,21 @@ class RecipeDetailsFragment : Fragment() {
                 ivPlayButton.visibility = GONE
             }
 
-            var isFavorite = false //Later this should come from the database.
+            val recipe = FavoriteRecipe(meal.idMeal, prefs.getUsername()!!, meal.strMeal, meal.strMealThumb)
+
+            var isFavorite = favViewModel.isFavourite(recipe)
+
 
             btnAddToFav.setOnClickListener {
                 isFavorite = !isFavorite
                 if (isFavorite) {
                     btnAddToFav.imageTintList = null
+                    favViewModel.addFavourite(recipe)
                 } else {
                     btnAddToFav.imageTintList = ColorStateList.valueOf(
                         ContextCompat.getColor(requireContext(), R.color.light_gray)
                     )
+                    favViewModel.removeFavourite(recipe)
                 }
 
                 Toast.makeText(requireContext(), "SOON TO BE IMPLEMENTED", Toast.LENGTH_SHORT).show()
