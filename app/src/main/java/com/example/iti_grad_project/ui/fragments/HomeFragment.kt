@@ -18,11 +18,14 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.RecipesAdapter
 import com.example.iti_grad_project.ui.viewmodels.AuthViewModel
 import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.utils.onShowMoreClick
+import com.example.iti_grad_project.utils.shouldUpdateMeal
+import com.google.gson.Gson
 
 class HomeFragment : Fragment() {
     lateinit var viewModel: HomeViewModel
@@ -34,6 +37,9 @@ class HomeFragment : Fragment() {
 
     lateinit var btnShowMore: Button
 
+    lateinit var preferenceManager: PreferenceManager
+
+    var dayChanged = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +61,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        preferenceManager = PreferenceManager(requireContext())
 
         rv_recipes = view.findViewById(R.id.rv_random_recipes)
         recipeOfTheDayView = view.findViewById(R.id.recipe_of_the_day_card)
@@ -78,14 +85,37 @@ class HomeFragment : Fragment() {
         viewModel.apiData.observe(viewLifecycleOwner) { meal ->
             //Populate meal of the day
             updateMealOfTheDay(meal.recipeOfTheDay)
+
+            if(dayChanged)
+                preferenceManager.setRecipeOfTheDay(Gson().toJson(meal.recipeOfTheDay))
+
             //Populate
             recipeAdapter.updateData(meal.listOfRandomRecipes)
         }
 
-        viewModel.fetchRecipes(true)
+
+        if(preferenceManager.shouldUpdateMeal())
+        {
+            dayChanged = true
+            viewModel.fetchRecipes(true)
+        }
+        else
+        {
+            dayChanged = false
+            preferenceManager.getRecipeOfTheDay()?.let{ recipeJson ->
+                val recipe = getRecipeFromPref(recipeJson)
+                updateMealOfTheDay(recipe)
+                viewModel.fetchRecipes(false, recipe)
+
+            }
+        }
     }
-    fun updateMealOfTheDay(meal: Meal, dayChanged: Boolean = false){
-        //if(!dayChanged) return
+
+    fun getRecipeFromPref(json: String): Meal{
+        return Gson().fromJson(json, Meal::class.java)
+    }
+
+    fun updateMealOfTheDay(meal: Meal){
         tvRecipeName.text = meal.strMeal
         Glide.with(requireContext())
             .load(meal.strMealThumb)

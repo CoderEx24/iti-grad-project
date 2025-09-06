@@ -22,4 +22,24 @@ class PreferenceManager(context: Context) {
         prefs.edit { remove("username").apply() }
     }
 
+    // 🔹 Recipe of the day storage
+    fun setRecipeOfTheDay(recipeJson: String) {
+        clearRecipeOfTheDay()
+        prefs.edit {
+            putString("recipe_of_day", recipeJson)
+            putLong("recipe_of_day_timestamp", System.currentTimeMillis())
+        }
+    }
+
+    fun getRecipeOfTheDay(): String? = prefs.getString("recipe_of_day", null)
+
+    fun getRecipeOfTheDayTimestamp(): Long =
+        prefs.getLong("recipe_of_day_timestamp", 0L)
+
+    fun clearRecipeOfTheDay() {
+        prefs.edit {
+            remove("recipe_of_day")
+            remove("recipe_of_day_timestamp")
+        }
+    }
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.iti_grad_project.R
+import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.data.remote.Meal
 
 fun onShowMoreClick(fragment: Fragment, recipeId: String)
@@ -12,4 +13,11 @@ fun onShowMoreClick(fragment: Fragment, recipeId: String)
     val bundle = Bundle()
     bundle.putString("meal", recipeId)
     findNavController(fragment).navigate(R.id.recipeDetailsFragment, bundle)
+}
+
+fun PreferenceManager.shouldUpdateMeal(): Boolean {
+    val lastUpdate = getRecipeOfTheDayTimestamp()
+    val now = System.currentTimeMillis()
+    val twentyFourHours = 24 * 60 * 60 * 1000L
+    return (now - lastUpdate) >= twentyFourHours
 }
