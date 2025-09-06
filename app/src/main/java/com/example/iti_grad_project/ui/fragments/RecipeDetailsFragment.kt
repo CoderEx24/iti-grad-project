@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -31,6 +32,8 @@ import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
 import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
+import kotlinx.coroutines.launch
+
 class RecipeDetailsFragment : Fragment() {
 
     lateinit var viewModel: RecipeDetailsViewModel
@@ -158,22 +161,29 @@ class RecipeDetailsFragment : Fragment() {
 
             val recipe = FavoriteRecipe(meal.idMeal, username, meal.strMeal, meal.strMealThumb)
 
-            var isFavorite = favViewModel.isFavourite(recipe)
+            lifecycleScope.launch {
+                var isFavorite = favViewModel.isFavourite(recipe)
 
-            btnAddToFav.setOnClickListener {
-                isFavorite = !isFavorite
-                if (isFavorite) {
+                Log.i("IS_FAVORITE", "onViewCreated: $isFavorite")
+
+                if(isFavorite)
                     btnAddToFav.imageTintList = null
-                    favViewModel.addFavourite(recipe)
-                } else {
-                    btnAddToFav.imageTintList = ColorStateList.valueOf(
-                        ContextCompat.getColor(requireContext(), R.color.light_gray)
-                    )
-                    favViewModel.removeFavourite(recipe)
-                }
 
-                Toast.makeText(requireContext(), "SOON TO BE IMPLEMENTED", Toast.LENGTH_SHORT).show()
+
+                btnAddToFav.setOnClickListener {
+                    isFavorite = !isFavorite
+                    if (isFavorite) {
+                        btnAddToFav.imageTintList = null
+                        favViewModel.addFavourite(recipe)
+                    } else {
+                        btnAddToFav.imageTintList = ColorStateList.valueOf(
+                            ContextCompat.getColor(requireContext(), R.color.light_gray)
+                        )
+                        favViewModel.removeFavourite(recipe)
+                    }
+                }
             }
+
         } catch (e: IllegalArgumentException) {
             Log.i("ERROR", "onViewCreated: ${e.message}")
         }

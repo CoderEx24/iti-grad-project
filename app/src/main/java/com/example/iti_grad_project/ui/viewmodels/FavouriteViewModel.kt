@@ -68,20 +68,15 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
     }
 
 
-    fun isFavourite(recipe: FavoriteRecipe): Boolean {
-        var isFavourite = false
-        viewModelScope.launch {
-            isFavourite = false
-            try {
-                val response = recipeRepo.isFavourite(authRepo.getUserName()!!, recipe.idMeal)
-                isFavourite = response != null
-                Log.i("FAV", "isFavourite: $response")
-            } catch (e: Exception) {
-                Log.i("ERROR", "isFavourite: ${e.message}")
-                isFavourite = false
-            }
+    suspend fun isFavourite(recipe: FavoriteRecipe): Boolean {
+        return try {
+            val response = recipeRepo.isFavourite(authRepo.getUserName()!!, recipe.idMeal)
+            Log.i("RESPONSE", "isFavourite: $response")
+            response != null
+        } catch (e: Exception) {
+            Log.i("ERROR", "isFavourite: ${e.message}")
+            false
         }
-        return isFavourite
     }
 
     companion object {
