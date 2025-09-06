@@ -1,5 +1,6 @@
 package com.example.iti_grad_project.ui.fragments
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.transition.Visibility
 import android.util.Log
@@ -15,6 +16,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.observe
@@ -36,7 +38,7 @@ class RecipeDetailsFragment : Fragment() {
     private lateinit var tvMealName: TextView
     private lateinit var tvCategoryArea: TextView
     private lateinit var tvInstructions: TextView
-    private lateinit var btnAddToFav: ImageButton
+    private lateinit var btnAddToFav: ImageView
     private lateinit var wvVideo: WebView
     private lateinit var rvIngredients: RecyclerView
     private lateinit var ingredientAdapter: IngredientsAdapter
@@ -66,7 +68,7 @@ class RecipeDetailsFragment : Fragment() {
         tvMealName = view.findViewById(R.id.tvMealName)
         tvCategoryArea = view.findViewById(R.id.tvCategoryArea)
         tvInstructions = view.findViewById(R.id.tvInstructions)
-        btnAddToFav = view.findViewById(R.id.btnFavorite)
+        btnAddToFav = view.findViewById(R.id.ivFavorite)
         wvVideo = view.findViewById(R.id.wvYouTube)
         rvIngredients = view.findViewById(R.id.rvIngredients)
 
@@ -123,7 +125,18 @@ class RecipeDetailsFragment : Fragment() {
                 ivPlayButton.visibility = GONE
             }
 
+            var isFavorite = false //Later this should come from the database.
+
             btnAddToFav.setOnClickListener {
+                isFavorite = !isFavorite
+                if (isFavorite) {
+                    btnAddToFav.imageTintList = null
+                } else {
+                    btnAddToFav.imageTintList = ColorStateList.valueOf(
+                        ContextCompat.getColor(requireContext(), R.color.light_gray)
+                    )
+                }
+
                 Toast.makeText(requireContext(), "SOON TO BE IMPLEMENTED", Toast.LENGTH_SHORT).show()
             }
         } catch (e: IllegalArgumentException) {

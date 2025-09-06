@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
     android:padding="12dp"
     android:background="?attr/colorSurface">
@@ -33,28 +33,47 @@
                 android:foreground="?attr/selectableItemBackground" />
 
             <!-- Favorite button -->
-            <ImageButton
-                android:id="@+id/btnFavorite"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/favorite"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:layout_gravity="top|end"
-                android:contentDescription="@string/favoriteBtnDescription"
-                android:padding="8dp"
-                android:layout_margin="8dp" />
         </FrameLayout>
         <!-- Title + Info -->
-        <TextView
-            android:id="@+id/tvMealName"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/meal_name"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_marginTop="8dp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_gravity="center_horizontal" />
+            android:padding="16dp">
+
+            <!-- Meal Name -->
+            <TextView
+                android:id="@+id/tvMealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Meal Name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/ivFavorite"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- Favorite Icon -->
+            <ImageView
+                android:id="@+id/ivFavorite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/favorite"
+                android:contentDescription="@string/favoriteBtnDescription"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintStart_toEndOf="@id/tvMealName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/light_gray" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <TextView
             android:id="@+id/tvCategoryArea"
@@ -113,6 +132,18 @@
             android:lineSpacingExtra="4dp"
             android:paddingBottom="12dp" />
 
+        <!-- Youtube Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/youtube"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_gravity="center"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp" />
+
         <!-- Video window with favorite button -->
         <FrameLayout
             android:id="@+id/flVideo"
@@ -121,6 +152,7 @@
             android:background="?attr/colorSurfaceVariant"
             android:foreground="?attr/selectableItemBackground"
             android:layout_marginBottom="16dp">
+
             <WebView
                 android:id="@+id/wvYouTube"
                 android:layout_width="match_parent"
