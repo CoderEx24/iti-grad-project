@@ -41,7 +41,7 @@ class RecipeDetailsViewModel(val repo: RecipeRepository): ViewModel() {
                 for(i in response)
                 {
                     Log.i("INGREDIENTS", "fetchDetails: $imageUrl${i.first}")
-                   ingredients.add(ingredientDetails(i.first, i.second, "$imageUrl${i.first}.png"))
+                    ingredients.add(ingredientDetails(i.first, i.second, "$imageUrl${i.first}.png"))
                 }
                 mealDetails.postValue(DetailsUiState(mealById, ingredients))
 
