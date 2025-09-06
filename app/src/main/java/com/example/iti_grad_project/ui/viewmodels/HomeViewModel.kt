@@ -61,6 +61,12 @@ class HomeViewModel(var repo: RecipeRepository): ViewModel() {
             catch(e: Exception)
             {
                 Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                // If error, still emit something so observers fire
+                apiData.postValue(
+                    HomeUiState(
+                        recipeOfTheDay = existingMeal!!,
+                        listOfRandomRecipes = emptyList()
+                    ))
             }
         }
     }

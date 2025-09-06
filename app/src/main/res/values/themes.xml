@@ -24,4 +24,10 @@
     </style>
 
     <style name="Theme.Itigradproject" parent="Base.Theme.Itigradproject" />
+
+    <style name="App.Theme.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/light_gray</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/applogo</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.Itigradproject</item>
+    </style>
 </resources>

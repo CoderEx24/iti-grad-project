@@ -19,7 +19,8 @@
             android:exported="true" />
         <activity
             android:name=".ui.activities.AuthActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Base.Theme.Itigradproject">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

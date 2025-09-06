@@ -9,6 +9,7 @@ import android.widget.Button
 import com.example.iti_grad_project.R
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -31,6 +32,8 @@ class HomeFragment : Fragment() {
     lateinit var viewModel: HomeViewModel
 
     lateinit var rv_recipes: RecyclerView
+
+    lateinit var emptyStateContainer: LinearLayout
     lateinit var recipeOfTheDayView: View
     lateinit var tvRecipeName: TextView
     lateinit var ivRecipeImage: ImageView
@@ -66,9 +69,13 @@ class HomeFragment : Fragment() {
         rv_recipes = view.findViewById(R.id.rv_random_recipes)
         recipeOfTheDayView = view.findViewById(R.id.recipe_of_the_day_card)
 
+        emptyStateContainer = view.findViewById(R.id.emptyStateContainer)
+
         tvRecipeName = recipeOfTheDayView.findViewById(R.id.tvRecipeTitle)
         ivRecipeImage = recipeOfTheDayView.findViewById(R.id.ivRecipeImage)
         btnShowMore = recipeOfTheDayView.findViewById(R.id.btnShowMore)
+
+
         val recipeAdapter = RecipesAdapter(listOf())
         { recipe ->
             onShowMoreClick(this, recipe.idMeal)
@@ -83,15 +90,28 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.searchFragment)
         }
         viewModel.apiData.observe(viewLifecycleOwner) { meal ->
-            //Populate meal of the day
+
+            if (meal.listOfRandomRecipes.isEmpty()) {
+                rv_recipes.visibility = View.GONE
+                emptyStateContainer.visibility = View.VISIBLE
+
+                val tvEmptyMessage = emptyStateContainer.findViewById<TextView>(R.id.tvEmptyMessage)
+                tvEmptyMessage.text = getString(R.string.no_meals)
+            } else {
+                rv_recipes.visibility = View.VISIBLE
+                emptyStateContainer.visibility = View.GONE
+            }
+
+            // Populate meal of the day
             updateMealOfTheDay(meal.recipeOfTheDay)
 
-            if(dayChanged)
+            if (dayChanged)
                 preferenceManager.setRecipeOfTheDay(Gson().toJson(meal.recipeOfTheDay))
 
-            //Populate
+            // Populate random recipes
             recipeAdapter.updateData(meal.listOfRandomRecipes)
         }
+
 
 
         if(preferenceManager.shouldUpdateMeal())
