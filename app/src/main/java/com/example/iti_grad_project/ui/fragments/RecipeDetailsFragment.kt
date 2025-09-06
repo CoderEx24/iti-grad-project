@@ -26,14 +26,25 @@ import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
 import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
-
 class RecipeDetailsFragment : Fragment() {
+
     lateinit var viewModel: RecipeDetailsViewModel
+
+    // Views as lateinit properties
+    private lateinit var ivRecipe: ImageView
+    private lateinit var ivPlayButton: ImageView
+    private lateinit var tvMealName: TextView
+    private lateinit var tvCategoryArea: TextView
+    private lateinit var tvInstructions: TextView
+    private lateinit var btnAddToFav: ImageButton
+    private lateinit var wvVideo: WebView
+    private lateinit var rvIngredients: RecyclerView
+    private lateinit var ingredientAdapter: IngredientsAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         viewModel = ViewModelProvider.create(
             this as ViewModelStoreOwner,
             factory = RecipeDetailsViewModel.Factory,
@@ -42,40 +53,42 @@ class RecipeDetailsFragment : Fragment() {
             }
         )[RecipeDetailsViewModel::class]
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recipe_details, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val meal = arguments?.getParcelable<Meal>("meal")
+        val mealId = arguments?.getString("meal")
 
-        val ivRecipe = view.findViewById<ImageView>(R.id.ivRecipeImage)
-        val ivPlayButton = view.findViewById<ImageView>(R.id.ivPlayButton)
-        val tvMealName = view.findViewById<TextView>(R.id.tvMealName)
-        val tvCategoryArea = view.findViewById<TextView>(R.id.tvCategoryArea)
-        val tvInstructions = view.findViewById<TextView>(R.id.tvInstructions)
+        // Initialize all views
+        ivRecipe = view.findViewById(R.id.ivRecipeImage)
+        ivPlayButton = view.findViewById(R.id.ivPlayButton)
+        tvMealName = view.findViewById(R.id.tvMealName)
+        tvCategoryArea = view.findViewById(R.id.tvCategoryArea)
+        tvInstructions = view.findViewById(R.id.tvInstructions)
+        btnAddToFav = view.findViewById(R.id.btnFavorite)
+        wvVideo = view.findViewById(R.id.wvYouTube)
+        rvIngredients = view.findViewById(R.id.rvIngredients)
 
-        var btnAddToFav = view.findViewById<ImageButton>(R.id.btnFavorite)
-
-        var wvVideo = view.findViewById<WebView>(R.id.wvYouTube)
-
-        val rvIngredients = view.findViewById<RecyclerView>(R.id.rvIngredients)
-        val ingredientAdapter = IngredientsAdapter(listOf())
+        ingredientAdapter = IngredientsAdapter(listOf())
         rvIngredients.adapter = ingredientAdapter
 
-        viewModel.mealDetails.observe(viewLifecycleOwner){ newData ->
+        viewModel.mealDetails.observe(viewLifecycleOwner) { newData ->
+            updateData(newData.meal)
             ingredientAdapter.updateData(newData.ingredientsAndMeasurements)
         }
 
-        try
-        {
-            if(meal == null) throw IllegalArgumentException("No meal to show")
+        if(mealId == null) throw IllegalArgumentException("No meal to show")
 
-            //Title
+        viewModel.fetchDetails(mealId)
+    }
+
+    private fun updateData(meal: Meal) {
+        try {
+            // Title
             tvMealName.text = meal.strMeal
-            //Image
+
+            // Image
             Glide.with(requireContext())
                 .load(meal.strMealThumb)
                 .placeholder(R.drawable.ic_account_placeholder)
@@ -83,25 +96,25 @@ class RecipeDetailsFragment : Fragment() {
                 .centerCrop()
                 .into(ivRecipe)
 
-            //Category and Area
+            // Category and Area
             tvCategoryArea.text = "${meal.strCategory} - ${meal.strArea}"
 
-            //Instructions
+            // Instructions
             tvInstructions.text = meal.strInstructions
 
-            //Youtube video
+            // Youtube video
             meal.strYoutube?.let { youtubeUrl ->
-                val videoId = youtubeUrl.substringAfter("v=") // Extract the video ID
+                val videoId = youtubeUrl.substringAfter("v=")
                 val embedHtml = """
-                                    <html>
-                                    <body style="margin:0">
-                                    <iframe width="100%" height="100%" 
-                                        src="https://www.youtube.com/embed/$videoId?autoplay=0&modestbranding=1&controls=1" 
-                                        frameborder="0" allowfullscreen>
-                                    </iframe>
-                                    </body>
-                                    </html>
-                                """
+                    <html>
+                    <body style="margin:0">
+                    <iframe width="100%" height="100%" 
+                        src="https://www.youtube.com/embed/$videoId?autoplay=0&modestbranding=1&controls=1" 
+                        frameborder="0" allowfullscreen>
+                    </iframe>
+                    </body>
+                    </html>
+                """
                 wvVideo.settings.javaScriptEnabled = true
                 wvVideo.settings.loadWithOverviewMode = true
                 wvVideo.settings.useWideViewPort = true
@@ -112,12 +125,9 @@ class RecipeDetailsFragment : Fragment() {
 
             btnAddToFav.setOnClickListener {
                 Toast.makeText(requireContext(), "SOON TO BE IMPLEMENTED", Toast.LENGTH_SHORT).show()
-                //Add to favourites
             }
-            viewModel.fetchDetails(meal)
-        }
-        catch (e: IllegalArgumentException){
-            Log.i("ERROR", "onViewCreated: ${e.message} ")
+        } catch (e: IllegalArgumentException) {
+            Log.i("ERROR", "onViewCreated: ${e.message}")
         }
     }
 }

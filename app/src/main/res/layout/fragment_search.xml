@@ -120,6 +120,7 @@
         android:clipToPadding="false"
         android:padding="16dp"
         android:background="?attr/colorSurface"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/filter_row"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

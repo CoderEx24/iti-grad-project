@@ -14,4 +14,5 @@ interface RecipeDao {
 
     @Query("SELECT * FROM favorite_recipes WHERE username = :username")
     fun getAllFavorites(username: String): LiveData<List<FavoriteRecipe>>
+
 }

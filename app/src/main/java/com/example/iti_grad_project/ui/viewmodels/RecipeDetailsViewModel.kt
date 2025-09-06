@@ -23,6 +23,7 @@ data class ingredientDetails(
     val imageSrc: String
 )
 data class DetailsUiState(
+    var meal: Meal,
     var ingredientsAndMeasurements: List<ingredientDetails>
 )
 class RecipeDetailsViewModel(val repo: RecipeRepository): ViewModel() {
@@ -30,16 +31,19 @@ class RecipeDetailsViewModel(val repo: RecipeRepository): ViewModel() {
     var mealDetails = MutableLiveData<DetailsUiState>()
 
     private var ingredients = mutableListOf<ingredientDetails>()
-    fun fetchDetails(meal: Meal){
+    fun fetchDetails(mealId: String){
         viewModelScope.launch {
             try {
-                val response = repo.getIngredientsAndItsMeasures(meal)
+
+                val mealById = repo.searchById(mealId).meals[0]
+
+                val response = repo.getIngredientsAndItsMeasures(mealById)
                 for(i in response)
                 {
                     Log.i("INGREDIENTS", "fetchDetails: $imageUrl${i.first}")
                    ingredients.add(ingredientDetails(i.first, i.second, "$imageUrl${i.first}.png"))
                 }
-                mealDetails.postValue(DetailsUiState(ingredients))
+                mealDetails.postValue(DetailsUiState(mealById, ingredients))
 
             }
             catch(e: Exception){
