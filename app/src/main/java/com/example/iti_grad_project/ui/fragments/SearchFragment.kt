@@ -86,22 +86,22 @@ class SearchFragment : Fragment() {
         etCategories.setOnItemClickListener{ parent, _, position, id ->
             val selectedValue = parent.getItemAtPosition(position).toString()
 
-            etCountry.clearListSelection()
-            etIngredient.clearListSelection()
+            etCountry.setText("")
+            etIngredient.setText("")
             viewModel.categorySearch(selectedValue)
         }
         etCountry.setOnItemClickListener{ parent, _, position, id ->
             val selectedValue = parent.getItemAtPosition(position).toString()
 
-            etIngredient.clearListSelection()
-            etCategories.clearListSelection()
+            etIngredient.setText("")
+            etCategories.setText("")
             viewModel.countrySearch(selectedValue)
         }
         etIngredient.setOnItemClickListener{ parent, _, position, id ->
             val selectedValue = parent.getItemAtPosition(position).toString()
 
-            etCountry.clearListSelection()
-            etCategories.clearListSelection()
+            etCountry.setText("")
+            etCategories.setText("")
             viewModel.ingredientSearch(selectedValue)
         }
         //endregion
