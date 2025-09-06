@@ -46,7 +46,6 @@ androidx-fragment = { group = "androidx.fragment", name = "fragment", version.re
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
