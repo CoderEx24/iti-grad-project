@@ -1,5 +1,6 @@
 package com.example.iti_grad_project.data.remote
 
+import android.util.Log
 import com.example.iti_grad_project.utils.baseUrl
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -9,10 +10,12 @@ import retrofit2.http.Query
 
 object RecipeApiService: RecipeApiImp {
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private val retrofit =
+        Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
 
     private val services = retrofit.create(RecipeApi::class.java)
 
