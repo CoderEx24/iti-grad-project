@@ -69,7 +69,8 @@
                 android:inputType="text"
                 android:focusable="true"
                 android:cursorVisible="false"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:focusableInTouchMode="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Section Title -->

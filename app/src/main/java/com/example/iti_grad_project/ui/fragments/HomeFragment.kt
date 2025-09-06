@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
         val rv_recipes = view.findViewById<RecyclerView>(R.id.rv_random_recipes)
 
         val recipeAdapter = RecipesAdapter(listOf())
@@ -60,8 +59,7 @@ class HomeFragment : Fragment() {
         searchEditText.setOnClickListener {
 
             // Navigate to SearchFragment when clicked
-            val navController = findNavController()
-            navController.navigate(R.id.searchFragment)
+            findNavController().navigate(R.id.searchFragment)
         }
         viewModel.apiData.observe(viewLifecycleOwner) { meal ->
             recipeAdapter.updateData(meal.listOfRandomRecipes)

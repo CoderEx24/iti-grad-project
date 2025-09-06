@@ -26,7 +26,6 @@ class AccountFragment : Fragment() {
         var signOut = view.findViewById<LinearLayout>(R.id.btnSignOut)
 
         about.setOnClickListener {
-            Toast.makeText(requireContext(), R.string.about_app, Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.aboutFragment)
         }
         signOut.setOnClickListener {
