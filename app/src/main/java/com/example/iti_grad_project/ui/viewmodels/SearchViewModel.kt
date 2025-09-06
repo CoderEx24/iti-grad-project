@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 
 data class SearchUiState(
     val searchResult: List<Meal>,
-
 )
 data class FiltersUiState(
     val categoryResponse: CategoryResponse,
@@ -76,6 +75,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
                                                     getCountries())
 
                 filtersData.postValue(filtersUiState)
+                Log.i("FILTERS", "getAllFilters: ${filtersData.value}")
             } catch (e: Exception) {
                 Log.i("ERROR", "fetchRecipes: ${e.message} ")
             }

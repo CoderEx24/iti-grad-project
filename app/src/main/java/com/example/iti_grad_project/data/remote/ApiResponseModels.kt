@@ -67,15 +67,19 @@ data class Meal(
 ) : Parcelable
 
 data class CategoryResponse(
-    val categories: List<String>
+    val meals: List<Category>
 )
-
+data class Category(
+    val strCategory: String
+)
 data class AreaResponse(
-    val areas: List<String>
+    val meals: List<Area>
 )
-
+data class Area(
+    val strArea: String
+)
 data class IngredientResponse(
-    val ingredients: List<Ingredient>
+    val meals: List<Ingredient>
 )
 
 data class Ingredient(

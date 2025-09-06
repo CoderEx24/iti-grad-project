@@ -7,9 +7,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.iti_grad_project.R
 import com.example.iti_grad_project.data.remote.Meal
 
-fun onShowMoreClick(fragment: Fragment, recipe: Meal)
+fun onShowMoreClick(fragment: Fragment, recipeId: String)
 {
     val bundle = Bundle()
-    bundle.putParcelable("meal", recipe)
+    bundle.putString("meal", recipeId)
     findNavController(fragment).navigate(R.id.recipeDetailsFragment, bundle)
 }

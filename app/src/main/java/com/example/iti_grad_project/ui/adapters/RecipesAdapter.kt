@@ -1,6 +1,7 @@
 package com.example.iti_grad_project.ui.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class RecipesAdapter(
         holder.btnShowMore.setOnClickListener {
             onShowMoreClick(recipe)
         }
+        Log.i("RECIPESEARCH", "onBindViewHolder: ${recipe} ")
     }
 
     override fun getItemCount() = data.size
