@@ -1,5 +1,7 @@
 package com.example.iti_grad_project.ui.fragments
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 import com.example.iti_grad_project.R
+import com.example.iti_grad_project.data.prefs.PreferenceManager
+import com.example.iti_grad_project.ui.activities.AuthActivity
 
 class AccountFragment : Fragment() {
     override fun onCreateView(
@@ -30,8 +34,13 @@ class AccountFragment : Fragment() {
             findNavController().navigate(R.id.aboutFragment)
         }
         signOut.setOnClickListener {
-            Toast.makeText(requireContext(), "Signing out...", Toast.LENGTH_SHORT).show()
-            //Signout api call
+            val prefManager = PreferenceManager(requireContext())
+            prefManager.setLoggedIn(false)
+            prefManager.setUsername("")
+
+            val intent = Intent(requireContext(), AuthActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 }
