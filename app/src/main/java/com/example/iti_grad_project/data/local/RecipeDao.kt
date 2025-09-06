@@ -14,9 +14,9 @@ interface RecipeDao {
     suspend fun deleteFavorite(recipe: FavoriteRecipe)
 
     @Query("SELECT * FROM favorite_recipes WHERE username = :username")
-    fun getAllFavorites(username: String): List<FavoriteRecipe>
+    suspend fun getAllFavorites(username: String): List<FavoriteRecipe>
 
     @Query("SELECT * FROM favorite_recipes WHERE username = :username AND idMeal = :idMeal")
-    fun isFavourite(username: String, idMeal: String): FavoriteRecipe?
+    suspend fun isFavourite(username: String, idMeal: String): FavoriteRecipe?
 
 }

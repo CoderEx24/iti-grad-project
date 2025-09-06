@@ -26,9 +26,9 @@ import com.bumptech.glide.Glide
 import com.example.iti_grad_project.R
 import com.example.iti_grad_project.data.local.FavoriteRecipe
 import com.example.iti_grad_project.data.prefs.PreferenceManager
+import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
-import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
 class RecipeDetailsFragment : Fragment() {
@@ -87,6 +87,9 @@ class RecipeDetailsFragment : Fragment() {
         wvVideo = view.findViewById(R.id.wvYouTube)
         rvIngredients = view.findViewById(R.id.rvIngredients)
 
+        // Initialize preferences
+        prefs = PreferenceManager(requireContext())
+
         ingredientAdapter = IngredientsAdapter(listOf())
         rvIngredients.adapter = ingredientAdapter
 
@@ -98,6 +101,7 @@ class RecipeDetailsFragment : Fragment() {
         if(mealId == null) throw IllegalArgumentException("No meal to show")
 
         viewModel.fetchDetails(mealId)
+
     }
 
     private fun updateData(meal: Meal) {
@@ -140,10 +144,21 @@ class RecipeDetailsFragment : Fragment() {
                 ivPlayButton.visibility = GONE
             }
 
-            val recipe = FavoriteRecipe(meal.idMeal, prefs.getUsername()!!, meal.strMeal, meal.strMealThumb)
+            // Handle favourites only if user is logged in
+            val username = prefs.getUsername()!!
+
+            Log.i("USERNAME", "onViewCreated: $username")
+            if (username.isNullOrEmpty()) {
+                btnAddToFav.setOnClickListener {
+                    Toast.makeText(requireContext(), getString(R.string.login_required), Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+
+
+            val recipe = FavoriteRecipe(meal.idMeal, username, meal.strMeal, meal.strMealThumb)
 
             var isFavorite = favViewModel.isFavourite(recipe)
-
 
             btnAddToFav.setOnClickListener {
                 isFavorite = !isFavorite

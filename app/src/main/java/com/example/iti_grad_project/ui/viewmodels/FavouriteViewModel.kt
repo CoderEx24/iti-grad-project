@@ -31,10 +31,10 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
     fun fetchFavourites(){
         viewModelScope.launch {
             try{
-                val response = recipeRepo.getAllFavourites(authRepo.getUserName()!!) as FavouriteUiState
-                apiData.postValue(response)
+                val response = recipeRepo.getAllFavourites(authRepo.getUserName()!!)
+                apiData.postValue(FavouriteUiState(response))
 
-//                Log.i("RESPONSE", "fetchRecipes: ${response.listOfFavouriteRecipes} ")
+                Log.i("RESPONSE", "fetchRecipes: ${response} ")
             }
             catch(e: Exception)
             {
@@ -71,9 +71,11 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
     fun isFavourite(recipe: FavoriteRecipe): Boolean {
         var isFavourite = false
         viewModelScope.launch {
+            isFavourite = false
             try {
                 val response = recipeRepo.isFavourite(authRepo.getUserName()!!, recipe.idMeal)
                 isFavourite = response != null
+                Log.i("FAV", "isFavourite: $response")
             } catch (e: Exception) {
                 Log.i("ERROR", "isFavourite: ${e.message}")
                 isFavourite = false
