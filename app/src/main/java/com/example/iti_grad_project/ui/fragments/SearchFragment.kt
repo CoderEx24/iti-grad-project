@@ -11,6 +11,9 @@ import android.view.inputmethod.InputMethodManager
 import com.example.iti_grad_project.R
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.iti_grad_project.ui.adapters.RecipesAdapter
+import com.example.iti_grad_project.utils.onShowMoreClick
 import com.google.android.material.transition.MaterialSharedAxis
 
 class SearchFragment : Fragment() {
@@ -37,8 +40,8 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //region initialize
         val searchBar = view.findViewById<EditText>(R.id.et_search)
-
 
         // Request focus and open keyboard
         //This is so when we click on the search bar in home fragment
@@ -46,5 +49,17 @@ class SearchFragment : Fragment() {
         searchBar.requestFocus()
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(searchBar, InputMethodManager.SHOW_IMPLICIT)
+        //endregion
+
+        //region perform query
+        val rvSearchResult = view.findViewById<RecyclerView>(R.id.rv_search_results)
+        val recipeAdapter = RecipesAdapter(listOf()) { recipe ->
+            onShowMoreClick(this, recipe)
+        }
+        rvSearchResult.adapter = recipeAdapter
+
+        if(!searchBar.text.isEmpty()) recipeAdapter.updateData(listOf())
+        //endregion
+
     }
 }
