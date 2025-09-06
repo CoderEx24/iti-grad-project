@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_theme_background"
     tools:context=".ui.fragments.LoginFragment">
 
     <TextView
@@ -29,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_login_textview_login"
-        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
@@ -46,11 +47,12 @@
 
     <Button
         android:id="@+id/fragment_login_button_login"
-        android:layout_width="110dp"
-        android:layout_height="53dp"
+        android:layout_width="@dimen/fragment_login_textview_width"
+        android:layout_height="wrap_content"
         android:onClick="onLogin"
         android:enabled="false"
         android:text="@string/fragment_login_textview_login_text"
+        android:background="@color/md_theme_primary"
         app:layout_constraintBottom_toTopOf="@+id/fragment_login_go_to_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,10 +62,11 @@
 
     <Button
         android:id="@+id/fragment_login_go_to_signup"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="wrap_content"
         android:onClick="onGoToSignup"
         android:text="@string/fragment_login_button_go_to_signup_text"
+        android:background="@color/md_theme_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
