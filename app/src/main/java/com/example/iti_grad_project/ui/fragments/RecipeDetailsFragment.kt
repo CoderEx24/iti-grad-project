@@ -90,7 +90,7 @@ class RecipeDetailsFragment : Fragment() {
             tvInstructions.text = meal.strInstructions
 
             //Youtube video
-            meal?.strYoutube?.let { youtubeUrl ->
+            meal.strYoutube?.let { youtubeUrl ->
                 val videoId = youtubeUrl.substringAfter("v=") // Extract the video ID
                 val embedHtml = """
                                     <html>

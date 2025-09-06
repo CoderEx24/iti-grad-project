@@ -90,30 +90,6 @@
             android:padding="8dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Measurements Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/measurements"
-            android:layout_gravity="center"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/colorPrimary"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="6dp" />
-
-        <GridLayout
-            android:id="@+id/glMeasurements"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:columnCount="2"
-            android:alignmentMode="alignMargins"
-            android:rowOrderPreserved="false"
-            android:clipToPadding="false"
-            android:padding="8dp"
-            android:layout_marginBottom="16dp" />
-
         <!-- Instructions Section -->
         <TextView
             android:layout_width="wrap_content"
