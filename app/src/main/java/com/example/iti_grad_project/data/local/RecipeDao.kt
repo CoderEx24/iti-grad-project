@@ -3,7 +3,6 @@ package com.example.iti_grad_project.data.local
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecipeDao {
