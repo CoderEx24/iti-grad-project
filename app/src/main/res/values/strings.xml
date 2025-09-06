@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ur Fav Meal</string>
+    <string name="app_name">Chef\'s Fork</string>
     <string name="fragment_signup_signup_label">Signup</string>
     <string name="fragment_signup_textview_username_label">Username</string>
     <string name="fragment_signup_button_signup">Signup</string>
@@ -26,7 +26,7 @@
     <string name="remove_favorite">Remove item</string>
     <string name="recipe_title">Recipe Title</string>
     <string name="change_profile_picture">Change Profile Picture</string>
-    <string name="about_app">App created by: Your Name\nVersion 1.0</string>
+    <string name="about_app">App created by: Team 5\nVersion 1.0</string>
     <string name="sign_out">Sign Out</string>
     <string name="username">insert username</string>
     <string name="about">About</string>
@@ -43,4 +43,7 @@
     <string name="search_country">country</string>
     <string name="search_category">category</string>
     <string name="favoriteBtnDescription">Add recipe to favorites</string>
+    <string name="instagram">Creator\'s Instagram</string>
+    <string name="facebook">Creator\'s Facebook</string>
+    <string name="app_logo">App logo</string>
 </resources>
