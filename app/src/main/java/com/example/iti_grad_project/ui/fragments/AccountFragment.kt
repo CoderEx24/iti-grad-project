@@ -36,7 +36,6 @@ class AccountFragment : Fragment() {
         usernameTextView.text = prefManager.getUsername()
 
         about.setOnClickListener {
-            Toast.makeText(requireContext(), R.string.about_app, Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.aboutFragment)
         }
 
