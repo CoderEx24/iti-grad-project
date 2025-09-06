@@ -18,6 +18,7 @@ import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.RecipesAdapter
 import com.example.iti_grad_project.ui.viewmodels.AuthViewModel
 import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
+import com.example.iti_grad_project.utils.onShowMoreClick
 
 class HomeFragment : Fragment() {
     lateinit var viewModel: HomeViewModel
@@ -46,9 +47,7 @@ class HomeFragment : Fragment() {
 
         val recipeAdapter = RecipesAdapter(listOf())
         { recipe ->
-            val bundle = Bundle()
-            bundle.putParcelable("meal", recipe)
-            findNavController().navigate(R.id.recipeDetailsFragment, bundle)
+            onShowMoreClick(this, recipe)
         }
         rv_recipes.adapter = recipeAdapter
 
