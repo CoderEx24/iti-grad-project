@@ -48,4 +48,5 @@
     <string name="app_logo">App logo</string>
     <string name="youtube">Preview</string>
     <string name="login_required">Please login to use favorites</string>
+    <string name="no_meals">Only God knows why there\'s nothing here...</string>
 </resources>
