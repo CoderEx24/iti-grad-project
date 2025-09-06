@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
@@ -26,15 +27,20 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var about = view.findViewById<LinearLayout>(R.id.btnAboutApp)
-        var signOut = view.findViewById<LinearLayout>(R.id.btnSignOut)
+        val prefManager = PreferenceManager(requireContext())
+
+        val usernameTextView: TextView = view.findViewById(R.id.tvUserName)
+        val about = view.findViewById<LinearLayout>(R.id.btnAboutApp)
+        val signOut = view.findViewById<LinearLayout>(R.id.btnSignOut)
+
+        usernameTextView.text = prefManager.getUsername()
 
         about.setOnClickListener {
             Toast.makeText(requireContext(), R.string.about_app, Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.aboutFragment)
         }
+
         signOut.setOnClickListener {
-            val prefManager = PreferenceManager(requireContext())
             prefManager.setLoggedIn(false)
             prefManager.setUsername("")
 
