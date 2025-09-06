@@ -104,7 +104,6 @@ class HomeFragment : Fragment() {
             dayChanged = false
             preferenceManager.getRecipeOfTheDay()?.let{ recipeJson ->
                 val recipe = getRecipeFromPref(recipeJson)
-                updateMealOfTheDay(recipe)
                 viewModel.fetchRecipes(false, recipe)
 
             }
