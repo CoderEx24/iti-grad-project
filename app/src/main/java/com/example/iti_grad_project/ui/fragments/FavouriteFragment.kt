@@ -76,9 +76,18 @@ class FavouriteFragment : Fragment() {
         rvFavorites.adapter = favoriteAdapter
         rvFavorites.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        viewModel.apiData.observe(viewLifecycleOwner) {
-            favoriteAdapter.updateData(it.listOfFavouriteRecipes)
+        viewModel.apiData.observe(viewLifecycleOwner) { state ->
+            favoriteAdapter.updateData(state.listOfFavouriteRecipes)
+
+            if (state.listOfFavouriteRecipes.isEmpty()) {
+                rvFavorites.visibility = View.GONE
+                emptyStateContainer.visibility = View.VISIBLE
+            } else {
+                rvFavorites.visibility = View.VISIBLE
+                emptyStateContainer.visibility = View.GONE
+            }
         }
+
 
         viewModel.fetchFavourites()
     }
