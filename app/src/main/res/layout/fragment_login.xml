@@ -12,7 +12,7 @@
         android:id="@+id/fragment_login_textview_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="10dp"
         android:text="@string/fragment_login_textview_login"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,21 +24,22 @@
         android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="@dimen/fragment_login_textview_height"
         android:ems="10"
+        android:labelFor="@string/fragment_login_textview_username_hint"
         android:inputType="text"
         android:hint="@string/fragment_login_textview_username_hint"
         app:layout_constraintBottom_toTopOf="@+id/fragment_login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_login_textview_login"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.01"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/fragment_login_password"
         android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="@dimen/fragment_login_textview_height"
-        android:hint="@string/fragment_login_textview_password_hint"
         android:ems="10"
+        android:hint="@string/fragment_login_textview_password_hint"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,27 +50,29 @@
         android:id="@+id/fragment_login_button_login"
         android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="wrap_content"
-        android:onClick="onLogin"
-        android:enabled="false"
-        android:text="@string/fragment_login_textview_login_text"
         android:background="@color/md_theme_primary"
+        android:enabled="false"
+        android:onClick="onLogin"
+        android:text="@string/fragment_login_textview_login_text"
         app:layout_constraintBottom_toTopOf="@+id/fragment_login_go_to_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_login_password"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/fragment_login_go_to_signup"
         android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="wrap_content"
+        android:background="@color/md_theme_secondary"
         android:onClick="onGoToSignup"
         android:text="@string/fragment_login_button_go_to_signup_text"
-        android:background="@color/md_theme_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_login_button_login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
