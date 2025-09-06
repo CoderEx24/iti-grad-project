@@ -56,6 +56,7 @@ class SearchFragment : Fragment() {
         //region initialize
         val searchBar = view.findViewById<EditText>(R.id.et_search)
 
+
         // Request focus and open keyboard
         //This is so when we click on the search bar in home fragment
         //We go to search fragment with the search bar in focus.
