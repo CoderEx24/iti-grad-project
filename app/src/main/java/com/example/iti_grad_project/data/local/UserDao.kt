@@ -15,4 +15,10 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE username= :username")
     suspend fun getUser(username: String): User?
+
+    @Query("UPDATE users SET profileImagePath = :imagePath WHERE username = :username")
+    suspend fun updateUserImage(username: String, imagePath: String)
+
+    @Query("SELECT profileImagePath FROM users WHERE username = :username")
+    suspend fun getProfileImage(username: String): String?
 }

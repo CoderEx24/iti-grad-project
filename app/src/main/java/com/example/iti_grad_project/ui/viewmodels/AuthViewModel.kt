@@ -1,15 +1,19 @@
 package com.example.iti_grad_project.ui.viewmodels
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.lifecycle.viewmodel.initializer
 import com.example.iti_grad_project.data.local.AppDatabase
 import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.repositories.AuthRepository
+import kotlinx.coroutines.launch
 
 data class AuthActivityUiState(
     val username: String = "",
@@ -41,6 +45,33 @@ class AuthViewModel(
 
     val isLoggedIn: Boolean
         get() = repository.isLoggedIn()
+
+    fun updateProfileImage(imagePath: String) {
+        try {
+            val username = repository.getUserName()
+
+            Log.i("Username", "$username")
+            if (!username.isNullOrEmpty()) {
+                viewModelScope.launch {
+                    repository.updateProfileImage(username, imagePath)
+                }
+            }
+            Log.i("processimagedone", "$username")
+        } catch (e: Exception) {
+            Log.i("UpdateError", "Error updating profile image")
+        }
+
+        Log.i("UpdatingImageResult", "Done")
+    }
+
+    suspend fun getProfileImage(): String? {
+        val username = repository.getUserName()
+        return if (!username.isNullOrEmpty()) {
+            repository.getProfileImage(username)
+        } else {
+            null
+        }
+    }
 
     companion object {
         // TODO: See if there's a better way to do this

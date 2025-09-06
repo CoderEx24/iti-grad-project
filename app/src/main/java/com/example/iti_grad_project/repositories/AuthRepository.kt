@@ -1,5 +1,6 @@
 package com.example.iti_grad_project.repositories
 
+import android.util.Log
 import com.example.iti_grad_project.data.local.User
 import com.example.iti_grad_project.data.local.UserDao
 import com.example.iti_grad_project.data.prefs.PreferenceManager
@@ -10,16 +11,18 @@ class AuthRepository(
 ) {
     suspend fun register(username: String, email: String, password: String): Boolean {
         return try {
+            Log.i("UserData", "$username, $email, $password")
             if(userDao.getUser(username) != null)
                 return false
 
-            val user = User(username, email, password)
+            val user = User(username, email, password, null)
             userDao.registerUser(user)
             prefs.setLoggedIn(true)
             prefs.setUsername(username)
 
             true
         } catch (e: Exception) {
+            Log.i("ERROR", "${e.message}")
             false
         }
     }
@@ -58,4 +61,12 @@ class AuthRepository(
     fun isLoggedIn(): Boolean = prefs.isLoggedIn()
 
     fun getUserName(): String? = prefs.getUsername()
+
+    suspend fun updateProfileImage(username: String, imagePath: String) {
+        userDao.updateUserImage(username, imagePath)
+    }
+
+    suspend fun getProfileImage(username: String): String? {
+        return userDao.getProfileImage(username)
+    }
 }
