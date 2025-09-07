@@ -14,10 +14,12 @@ import com.bumptech.glide.Glide
 import com.example.iti_grad_project.R
 import com.example.iti_grad_project.data.local.FavoriteRecipe
 import com.example.iti_grad_project.data.remote.Meal
+import com.example.iti_grad_project.utils.onShowMoreClick
 
 class FavouriteAdapter(
     private var data: List<FavoriteRecipe>,
-    private val onRemoveClick: (FavoriteRecipe) -> Unit
+    private val onRemoveClick: (FavoriteRecipe) -> Unit,
+    private val showMoreClick: (String) -> Unit
 
 ) : RecyclerView.Adapter<FavouriteAdapter.MyViewHolder>() {
 
@@ -47,9 +49,9 @@ class FavouriteAdapter(
         }
 
         // Handle Show More button click
-//        holder.btnShowMore.setOnClickListener {
-//            onShowMoreClick(recipe)
-//        }
+        holder.btnShowMore.setOnClickListener {
+            showMoreClick(recipe.idMeal)
+        }
         Log.i("RECIPESEARCH", "onBindViewHolder: ${recipe} ")
     }
 
@@ -67,6 +69,8 @@ class FavouriteAdapter(
         val tvRecipeTitle: TextView = itemView.findViewById(R.id.tvRecipeTitle)
 
         val btnRemove: ImageButton = itemView.findViewById(R.id.btnRemove)
-//        val btnShowMore: Button = itemView.findViewById(R.id.btnShowMore)
+
+        val btnShowMore: Button = itemView.findViewById(R.id.btnShowMore)
+
     }
 }

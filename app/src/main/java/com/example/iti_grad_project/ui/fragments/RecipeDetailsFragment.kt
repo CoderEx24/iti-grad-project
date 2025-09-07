@@ -2,7 +2,6 @@ package com.example.iti_grad_project.ui.fragments
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.transition.Visibility
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,15 +10,12 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import androidx.lifecycle.observe
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +26,6 @@ import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
-import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
 import kotlinx.coroutines.launch
 

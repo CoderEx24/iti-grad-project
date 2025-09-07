@@ -68,10 +68,14 @@ class FavouriteFragment : Fragment() {
         }
 
 
-        val favoriteAdapter = FavouriteAdapter(favoritesList)
-            { recipe ->
+        val favoriteAdapter = FavouriteAdapter(favoritesList, { recipe ->
                 onRemoveClick(this, recipe)
-            }
+
+        },
+            { recipeString -> onShowMoreClick(this, recipeString)
+
+        })
+
 
         rvFavorites.adapter = favoriteAdapter
         rvFavorites.layoutManager = GridLayoutManager(requireContext(), 2)

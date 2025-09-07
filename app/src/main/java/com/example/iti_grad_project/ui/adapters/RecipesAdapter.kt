@@ -16,7 +16,7 @@ import com.example.iti_grad_project.data.remote.Meal
 
 class RecipesAdapter(
     private var data: List<Meal>,
-    private val onShowMoreClick: (Meal) -> Unit
+    private val onShowMoreClick: (String) -> Unit
 ) : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -41,7 +41,7 @@ class RecipesAdapter(
 
         // Handle Show More button click
         holder.btnShowMore.setOnClickListener {
-            onShowMoreClick(recipe)
+            onShowMoreClick(recipe.idMeal)
         }
         Log.i("RECIPESEARCH", "onBindViewHolder: ${recipe} ")
     }

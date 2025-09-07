@@ -67,8 +67,8 @@ class SearchFragment : Fragment() {
         //region perform query
         val rvSearchResult = view.findViewById<RecyclerView>(R.id.rv_search_results)
 
-        val recipeAdapter = RecipesAdapter(listOf()) { recipe ->
-            onShowMoreClick(this, recipe.idMeal)
+        val recipeAdapter = RecipesAdapter(listOf()) { recipeId ->
+            onShowMoreClick(this, recipeId)
         }
         rvSearchResult.adapter = recipeAdapter
 
@@ -113,6 +113,9 @@ class SearchFragment : Fragment() {
 
                 // Call your custom function with the entered text
                 viewModel.performSearchQuery(searchBar.text.toString())
+                etCountry.setText("")
+                etCategories.setText("")
+                etIngredient.setText("")
                 true // consume the event
             } else {
                 false

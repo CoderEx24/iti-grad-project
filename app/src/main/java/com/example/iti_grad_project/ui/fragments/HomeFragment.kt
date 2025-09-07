@@ -77,8 +77,8 @@ class HomeFragment : Fragment() {
 
 
         val recipeAdapter = RecipesAdapter(listOf())
-        { recipe ->
-            onShowMoreClick(this, recipe.idMeal)
+        { recipeId ->
+            onShowMoreClick(this, recipeId)
         }
         rv_recipes.adapter = recipeAdapter
 
