@@ -21,6 +21,9 @@ fun onRemoveClick(fragment: FavouriteFragment, recipe: FavoriteRecipe) {
     fragment.viewModel.removeFavourite(recipe)
 }
 
+fun getEmptyMeal() = Meal("","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","")
+
+
 fun PreferenceManager.shouldUpdateMeal(): Boolean {
     val lastUpdate = getRecipeOfTheDayTimestamp()
     val now = System.currentTimeMillis()

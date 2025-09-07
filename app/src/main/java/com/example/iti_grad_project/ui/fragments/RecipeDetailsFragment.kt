@@ -148,10 +148,10 @@ class RecipeDetailsFragment : Fragment() {
             }
 
             // Handle favourites only if user is logged in
-            val username = prefs.getUsername()!!
+            val username = prefs.getUsername() ?: ""
 
             Log.i("USERNAME", "onViewCreated: $username")
-            if (username.isNullOrEmpty()) {
+            if (username.isEmpty()) {
                 btnAddToFav.setOnClickListener {
                     Toast.makeText(requireContext(), getString(R.string.login_required), Toast.LENGTH_SHORT).show()
                 }
