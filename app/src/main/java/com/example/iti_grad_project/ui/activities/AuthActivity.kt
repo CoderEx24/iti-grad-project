@@ -45,7 +45,7 @@ class AuthActivity : AppCompatActivity() {
         )[AuthViewModel::class]
 
         // TODO: This should happen elsewhere. At the Splash Screen activity for example
-        //if (authViewModel.isLoggedIn) goToRecipeActivity()
+        if (authViewModel.isLoggedIn) goToRecipeActivity()
     }
 
     fun onGoToSignup(view: View?) {
