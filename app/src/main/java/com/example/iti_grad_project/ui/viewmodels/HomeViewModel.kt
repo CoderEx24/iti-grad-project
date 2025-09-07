@@ -19,7 +19,6 @@ import com.example.iti_grad_project.data.remote.RecipeApiImp
 import com.example.iti_grad_project.data.remote.RecipeApiService
 import com.example.iti_grad_project.data.remote.RecipeResponse
 import com.example.iti_grad_project.repositories.AuthRepository
-import com.example.iti_grad_project.utils.getEmptyMeal
 import kotlinx.coroutines.launch
 
 data class HomeUiState(
@@ -63,9 +62,10 @@ class HomeViewModel(var repo: RecipeRepository): ViewModel() {
             {
                 Log.i("ERROR", "fetchRecipes: ${e.message} ")
                 // If error, still emit something so observers fire
+                val meal = existingMeal ?: Meal("","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","")
                 apiData.postValue(
                     HomeUiState(
-                        recipeOfTheDay = existingMeal ?: getEmptyMeal(),
+                        recipeOfTheDay = meal,
                         listOfRandomRecipes = emptyList()
                     ))
             }
