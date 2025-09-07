@@ -62,9 +62,10 @@ class HomeViewModel(var repo: RecipeRepository): ViewModel() {
             {
                 Log.i("ERROR", "fetchRecipes: ${e.message} ")
                 // If error, still emit something so observers fire
+                val meal = existingMeal ?: Meal("","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","")
                 apiData.postValue(
                     HomeUiState(
-                        recipeOfTheDay = existingMeal!!,
+                        recipeOfTheDay = meal,
                         listOfRandomRecipes = emptyList()
                     ))
             }
