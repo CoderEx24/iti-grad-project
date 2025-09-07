@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="12dp"
-    android:background="@color/md_theme_background"
     tools:context=".ui.fragments.LoginFragment">
 
     <TextView
@@ -16,18 +15,14 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:text="@string/fragment_login_textview_login"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/fragment_login_textview_username_hint"
-        app:startIconDrawable="@drawable/ic_account_placeholder"
-        >
+        app:startIconDrawable="@drawable/ic_account_placeholder">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_login_username"
@@ -36,32 +31,24 @@
             android:layout_gravity="center"
             android:ems="10"
             android:labelFor="@string/fragment_login_textview_username_hint"
-            android:inputType="text"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_login_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_login_textview_login"
-            app:layout_constraintVertical_bias="0.01"
-            app:layout_constraintVertical_chainStyle="packed" />
+            android:inputType="text" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/fragment_login_textview_password_hint"
-        app:endIconMode="password_toggle"
-        >
+        app:endIconMode="password_toggle">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_login_password"
             android:layout_width="@dimen/fragment_login_textview_width"
             android:layout_height="@dimen/fragment_login_textview_height"
             android:layout_gravity="center"
             android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_login_username" />
+            android:inputType="textPassword"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Space
@@ -76,14 +63,7 @@
         android:background="@color/md_theme_primary"
         android:enabled="false"
         android:onClick="onLogin"
-        android:text="@string/fragment_login_textview_login_text"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_login_go_to_signup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.71"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_login_password"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:text="@string/fragment_login_textview_login_text"/>
 
     <Button
         android:id="@+id/fragment_login_go_to_signup"
@@ -92,11 +72,6 @@
         android:layout_gravity="center"
         android:background="@color/md_theme_secondary"
         android:onClick="onGoToSignup"
-        android:text="@string/fragment_login_button_go_to_signup_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_login_button_login" />
+        android:text="@string/fragment_login_button_go_to_signup_text"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
