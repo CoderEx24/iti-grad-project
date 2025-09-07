@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="12dp"
+    android:background="@color/md_theme_primaryContainer"
     tools:context=".ui.fragments.LoginFragment">
 
     <TextView
         android:id="@+id/fragment_login_textview_login"
+        android:textColor="@color/md_theme_onPrimaryContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -55,22 +56,28 @@
         android:layout_width="match_parent"
         android:layout_height="30dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/fragment_login_button_login"
         android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/md_theme_primary"
+        android:textColor="@color/md_theme_onPrimary"
         android:enabled="false"
         android:onClick="onLogin"
-        android:text="@string/fragment_login_textview_login_text"/>
+        android:text="@string/fragment_login_textview_login_text" />
 
-    <Button
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/fragment_login_go_to_signup"
         android:layout_width="@dimen/fragment_login_textview_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/md_theme_secondary"
+        android:textColor="@color/md_theme_onSecondary"
         android:onClick="onGoToSignup"
         android:text="@string/fragment_login_button_go_to_signup_text"/>
 
