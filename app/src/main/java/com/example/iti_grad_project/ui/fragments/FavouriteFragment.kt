@@ -76,9 +76,17 @@ class FavouriteFragment : Fragment() {
 
         })
 
+        val displayMetrics = resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+
+        val columnWidthDp = 160 // desired width per item in dp
+        val spanCount = (screenWidthDp / columnWidthDp).toInt().coerceAtLeast(2)
 
         rvFavorites.adapter = favoriteAdapter
-        rvFavorites.layoutManager = GridLayoutManager(requireContext(), 2)
+        rvFavorites.layoutManager = GridLayoutManager(requireContext(), spanCount)
+
+
+//        rvFavorites.layoutManager = GridLayoutManager(requireContext(), 2)
 
         viewModel.apiData.observe(viewLifecycleOwner) { state ->
             favoriteAdapter.updateData(state.listOfFavouriteRecipes)

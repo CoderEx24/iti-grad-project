@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -27,10 +28,11 @@ import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.utils.onShowMoreClick
 import com.example.iti_grad_project.utils.shouldUpdateMeal
 import com.google.gson.Gson
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     lateinit var viewModel: HomeViewModel
-
+    private lateinit var authViewModel: AuthViewModel
     lateinit var rv_recipes: RecyclerView
 
     lateinit var emptyStateContainer: LinearLayout
@@ -57,6 +59,14 @@ class HomeFragment : Fragment() {
             }
         )[HomeViewModel::class]
 
+        authViewModel = ViewModelProvider.create(
+            this as ViewModelStoreOwner,
+            factory = AuthViewModel.Factory,
+            extras = MutableCreationExtras().apply {
+                set(AuthViewModel.CONTEXT_KEY, requireContext())
+            }
+        )[AuthViewModel::class]
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -75,6 +85,21 @@ class HomeFragment : Fragment() {
         ivRecipeImage = recipeOfTheDayView.findViewById(R.id.ivRecipeImage)
         btnShowMore = recipeOfTheDayView.findViewById(R.id.btnShowMore)
 
+        val ivUser = view.findViewById<ImageView>(R.id.iv_user)
+
+        lifecycleScope.launch {
+            val imagePath = authViewModel.getProfileImage()
+            if (!imagePath.isNullOrEmpty()) {
+                Glide.with(this@HomeFragment)
+                    .load(imagePath)
+                    .placeholder(R.drawable.ic_user_placeholder)
+                    .into(ivUser)
+            }
+        }
+
+        ivUser.setOnClickListener {
+            findNavController().navigate(R.id.accountFragment)
+        }
 
         val recipeAdapter = RecipesAdapter(listOf())
         { recipeId ->

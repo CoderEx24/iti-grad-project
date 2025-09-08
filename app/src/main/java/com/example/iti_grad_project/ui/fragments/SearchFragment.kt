@@ -16,6 +16,7 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iti_grad_project.ui.adapters.RecipesAdapter
 import com.example.iti_grad_project.ui.viewmodels.SearchViewModel
@@ -72,6 +73,14 @@ class SearchFragment : Fragment() {
             onShowMoreClick(this, recipeId)
         }
         rvSearchResult.adapter = recipeAdapter
+
+        val displayMetrics = resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+
+        val columnWidthDp = 160 // desired width per item in dp
+        val spanCount = (screenWidthDp / columnWidthDp).toInt().coerceAtLeast(2)
+
+        rvSearchResult.layoutManager = GridLayoutManager(requireContext(), spanCount)
 
         if(!searchBar.text.isEmpty()) recipeAdapter.updateData(listOf())
 

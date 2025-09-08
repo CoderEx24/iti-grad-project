@@ -20,7 +20,7 @@
     <string name="recipe_card_title">Title of recipe</string>
     <string name="recipe_card_subhead">Subhead of recipe</string>
     <string name="search_recipes">Search for recipes</string>
-    <string name="txt_random_recipes">Random recipes</string>
+    <string name="txt_random_recipes">Discover more</string>
     <string name="no_favorites_yet">No favorites yet</string>
     <string name="favorite_recipes">Favorite Recipes</string>
     <string name="remove_favorite">Remove item</string>
@@ -49,4 +49,5 @@
     <string name="youtube">Preview</string>
     <string name="login_required">Please login to use favorites</string>
     <string name="no_meals">Only God knows why there\'s nothing here...</string>
+    <string name="login">Login</string>
 </resources>

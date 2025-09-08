@@ -18,14 +18,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.iti_grad_project.R
 import com.example.iti_grad_project.data.local.FavoriteRecipe
 import com.example.iti_grad_project.data.prefs.PreferenceManager
-import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
+import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
 import kotlinx.coroutines.launch
 
@@ -95,6 +96,14 @@ class RecipeDetailsFragment : Fragment() {
             updateData(newData.meal)
             ingredientAdapter.updateData(newData.ingredientsAndMeasurements)
         }
+
+        val displayMetrics = resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+
+        val columnWidthDp = 160 // desired width per item in dp
+        val spanCount = (screenWidthDp / columnWidthDp).toInt().coerceAtLeast(2)
+
+        rvIngredients.layoutManager = GridLayoutManager(requireContext(), spanCount)
 
         if(mealId == null) throw IllegalArgumentException("No meal to show")
 

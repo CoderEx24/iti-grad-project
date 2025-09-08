@@ -46,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Meal Name"
-                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="8dp"
@@ -93,6 +92,7 @@
             android:textAppearance="?attr/textAppearanceSubtitle1"
             android:fontFamily="@font/poppins_medium"
             android:layout_gravity="center"
+            android:textStyle="bold"
             android:textColor="?attr/colorPrimary"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="6dp" />
@@ -118,6 +118,7 @@
             android:textAppearance="?attr/textAppearanceSubtitle1"
             android:fontFamily="@font/poppins_medium"
             android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="6dp" />
 
@@ -141,6 +142,7 @@
             android:fontFamily="@font/poppins_medium"
             android:layout_gravity="center"
             android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="6dp" />
 

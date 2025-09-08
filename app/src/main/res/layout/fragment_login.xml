@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/md_theme_primaryContainer"
+    android:orientation="vertical"
     tools:context=".ui.fragments.LoginFragment">
 
     <TextView
         android:id="@+id/fragment_login_textview_login"
-        android:textColor="@color/md_theme_onPrimaryContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:text="@string/fragment_login_textview_login"
+        android:textColor="@color/md_theme_onPrimaryContainer"
         android:textSize="30sp" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -31,9 +30,8 @@
             android:layout_height="@dimen/fragment_login_textview_height"
             android:layout_gravity="center"
             android:ems="10"
-            android:labelFor="@string/fragment_login_textview_username_hint"
-            android:inputType="text" />
-
+            android:inputType="text"
+            android:labelFor="@string/fragment_login_textview_username_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -48,8 +46,7 @@
             android:layout_height="@dimen/fragment_login_textview_height"
             android:layout_gravity="center"
             android:ems="10"
-            android:inputType="textPassword"/>
-
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Space
@@ -62,10 +59,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/md_theme_primary"
-        android:textColor="@color/md_theme_onPrimary"
         android:enabled="false"
         android:onClick="onLogin"
-        android:text="@string/fragment_login_textview_login_text" />
+        android:text="@string/fragment_login_textview_login_text"
+        android:textColor="@color/md_theme_onPrimary" />
 
     <Space
         android:layout_width="wrap_content"
@@ -77,8 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/md_theme_secondary"
-        android:textColor="@color/md_theme_onSecondary"
         android:onClick="onGoToSignup"
-        android:text="@string/fragment_login_button_go_to_signup_text"/>
-
+        android:text="@string/fragment_login_button_go_to_signup_text"
+        android:textColor="@color/md_theme_onSecondary" />
 </androidx.appcompat.widget.LinearLayoutCompat>

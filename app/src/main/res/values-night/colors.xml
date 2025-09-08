@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary -->
-    <color name="md_theme_primary">#D0BCFF</color>
-    <color name="md_theme_onPrimary">#381E72</color>
-    <color name="md_theme_primaryContainer">#4F378B</color>
-    <color name="md_theme_onPrimaryContainer">#EADDFF</color>
+    <color name="md_theme_primary">#F0D3C9</color>
+    <color name="md_theme_onPrimary">#3E160A</color>
+    <color name="md_theme_primaryContainer">#4A1A0D</color>
+    <color name="md_theme_onPrimaryContainer">#FFDAD0</color>
 
     <!-- Secondary -->
-    <color name="md_theme_secondary">#CCC2DC</color>
-    <color name="md_theme_onSecondary">#332D41</color>
-    <color name="md_theme_secondaryContainer">#4A4458</color>
-    <color name="md_theme_onSecondaryContainer">#E8DEF8</color>
+    <color name="md_theme_secondary">#E2B6A8</color>
+    <color name="md_theme_onSecondary">#4A1A0D</color>
+    <color name="md_theme_secondaryContainer">#5A2111</color>
+    <color name="md_theme_onSecondaryContainer">#FFDAD0</color>
 
     <!-- Background -->
     <color name="md_theme_background">#1C1B1F</color>
