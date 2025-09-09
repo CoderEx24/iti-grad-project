@@ -13,13 +13,13 @@
         android:layout_margin="40dp"
         android:padding="30dp"
         app:cardBackgroundColor="@color/cardview_light_background"
-        app:cardCornerRadius="25dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/md_theme_secondary"
-        app:strokeWidth="6dp">
+
+        app:strokeWidth="0dp">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"

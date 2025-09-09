@@ -35,7 +35,7 @@ class IngredientsAdapter(
         // Load image with Glide
         Glide.with(holder.itemView.context)
             .load(ingredientDetails.imageSrc)
-            .placeholder(R.drawable.ic_account_placeholder)
+            .placeholder(R.drawable.ic_meal_placeholder)
             .error(R.drawable.missing_image)
             .centerCrop()
             .into(holder.ivIngredientImage)
