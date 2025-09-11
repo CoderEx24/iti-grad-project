@@ -30,4 +30,26 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/applogo</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.Itigradproject</item>
     </style>
+
+
+    <style name="DialogButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/outlined_button_background</item>
+        <item name="android:textColor">@color/md_theme_onPrimary</item>
+    </style>
+
+    <style name="DialogButton.Outlined" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/outlined_button_background</item>
+        <item name="android:textColor">@color/md_theme_primary</item>
+    </style>
+
 </resources>

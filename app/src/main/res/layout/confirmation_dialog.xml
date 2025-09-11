@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="@color/md_theme_surface">
+
+    <!-- Warning Icon -->
+    <ImageView
+        android:id="@+id/dialogIcon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/icons8_warning_100"
+        android:contentDescription="@string/app_name"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/md_theme_onSurface"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Message -->
+    <TextView
+        android:id="@+id/dialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This action cannot be undone."
+        android:textSize="16sp"
+        android:textColor="@color/md_theme_onSurface"
+        android:gravity="center"
+        android:ellipsize="none"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Buttons Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Cancel Button -->
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_cancel"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_primary"
+            android:background="@drawable/cancel_button_bg"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp" />
+
+        <!-- Confirm Button -->
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_confirm"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/md_theme_onPrimary"
+            android:background="@drawable/confirm_button_bg"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:layout_marginStart="12dp" />
+
+    </LinearLayout>
+</LinearLayout>

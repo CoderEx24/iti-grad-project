@@ -1,30 +1,27 @@
 package com.example.iti_grad_project.ui.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import android.widget.LinearLayout
-import androidx.core.view.isEmpty
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.MutableCreationExtras
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iti_grad_project.R
 import com.example.iti_grad_project.data.local.FavoriteRecipe
-import com.example.iti_grad_project.data.local.RecipeDao
-import com.example.iti_grad_project.data.remote.RecipeApi
-import com.example.iti_grad_project.data.remote.RecipeResponse
-import com.example.iti_grad_project.repositories.RecipeRepository
 import com.example.iti_grad_project.ui.adapters.FavouriteAdapter
-import com.example.iti_grad_project.ui.adapters.RecipesAdapter
 import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
-import com.example.iti_grad_project.ui.viewmodels.HomeViewModel
 import com.example.iti_grad_project.utils.onRemoveClick
 import com.example.iti_grad_project.utils.onShowMoreClick
+import com.google.android.material.button.MaterialButton
 
 class FavouriteFragment : Fragment() {
     lateinit var favoritesList: List<FavoriteRecipe>
@@ -69,7 +66,7 @@ class FavouriteFragment : Fragment() {
 
 
         val favoriteAdapter = FavouriteAdapter(favoritesList, { recipe ->
-                onRemoveClick(this, recipe)
+                showDialog(recipe)
 
         },
             { recipeString -> onShowMoreClick(this, recipeString)
@@ -102,5 +99,36 @@ class FavouriteFragment : Fragment() {
 
 
         viewModel.fetchFavourites()
+    }
+
+
+    private fun showDialog(recipe: FavoriteRecipe) {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.confirmation_dialog)
+
+        val message: TextView = dialog.findViewById(R.id.dialogMessage)
+        message.text = "Remove ${recipe.strMeal} "
+
+
+        val yesBtn: MaterialButton = dialog.findViewById(R.id.btnConfirm)
+        yesBtn.setOnClickListener {
+            onRemoveClick(this, recipe)
+            dialog.dismiss()
+        }
+
+        val noBtn: Button = dialog.findViewById(R.id.btnCancel)
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
+        // 🔥 Force dialog width to match parent
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 }

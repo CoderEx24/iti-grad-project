@@ -50,4 +50,6 @@
     <string name="login_required">Please login to use favorites</string>
     <string name="no_meals">Only God knows why there\'s nothing here...</string>
     <string name="login">Login</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_cancel">Cancel</string>
 </resources>
