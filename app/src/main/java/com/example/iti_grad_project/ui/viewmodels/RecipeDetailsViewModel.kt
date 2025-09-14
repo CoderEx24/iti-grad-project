@@ -14,6 +14,7 @@ import com.example.iti_grad_project.data.remote.Ingredient
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.data.remote.RecipeApiService
 import com.example.iti_grad_project.repositories.RecipeRepository
+import com.example.iti_grad_project.utils.ERROR_TAG
 import com.example.iti_grad_project.utils.imageUrl
 import kotlinx.coroutines.launch
 
@@ -47,7 +48,7 @@ class RecipeDetailsViewModel(val repo: RecipeRepository): ViewModel() {
 
             }
             catch(e: Exception){
-                Log.i("ERROR", "ERROR at fetchDetails: ${e.message} ")
+                Log.i(ERROR_TAG, "ERROR at fetchDetails: ${e.message} ")
             }
         }
     }

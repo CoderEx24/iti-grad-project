@@ -18,6 +18,7 @@ import com.example.iti_grad_project.data.remote.RecipeApiService
 import com.example.iti_grad_project.data.remote.RecipeResponse
 import com.example.iti_grad_project.repositories.AuthRepository
 import com.example.iti_grad_project.repositories.RecipeRepository
+import com.example.iti_grad_project.utils.ERROR_TAG
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
@@ -38,7 +39,7 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
             }
         }
     }
@@ -51,7 +52,7 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "addFavourite: ${e.message} ")
+                Log.i(ERROR_TAG, "addFavourite: ${e.message} ")
             }
         }
     }
@@ -62,7 +63,7 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
                 recipeRepo.deleteFavourite(recipe)
                 fetchFavourites()
             } catch (e: Exception) {
-                Log.i("ERROR", "removeFavourite: ${e.message}")
+                Log.i(ERROR_TAG, "removeFavourite: ${e.message}")
             }
         }
     }
@@ -74,7 +75,7 @@ class FavouriteViewModel(var recipeRepo: RecipeRepository, var authRepo: AuthRep
             Log.i("RESPONSE", "isFavourite: $response")
             response != null
         } catch (e: Exception) {
-            Log.i("ERROR", "isFavourite: ${e.message}")
+            Log.i(ERROR_TAG, "isFavourite: ${e.message}")
             false
         }
     }

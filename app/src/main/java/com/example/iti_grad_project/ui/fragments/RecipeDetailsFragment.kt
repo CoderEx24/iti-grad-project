@@ -28,6 +28,7 @@ import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.ui.adapters.IngredientsAdapter
 import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
+import com.example.iti_grad_project.utils.ERROR_TAG
 import kotlinx.coroutines.launch
 
 class RecipeDetailsFragment : Fragment() {
@@ -105,9 +106,14 @@ class RecipeDetailsFragment : Fragment() {
 
         rvIngredients.layoutManager = GridLayoutManager(requireContext(), spanCount)
 
-        if(mealId == null) throw IllegalArgumentException("No meal to show")
+        try {
+            if (mealId == null) throw IllegalArgumentException("No meal to show")
 
-        viewModel.fetchDetails(mealId)
+            viewModel.fetchDetails(mealId)
+        }
+        catch (e: IllegalArgumentException){
+            Log.i(ERROR_TAG, "onViewCreated: ${e.message}")
+        }
 
     }
 

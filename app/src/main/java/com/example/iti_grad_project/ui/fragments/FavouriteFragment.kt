@@ -21,6 +21,7 @@ import com.example.iti_grad_project.ui.adapters.FavouriteAdapter
 import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.utils.onRemoveClick
 import com.example.iti_grad_project.utils.onShowMoreClick
+import com.example.iti_grad_project.utils.showDialog
 import com.google.android.material.button.MaterialButton
 
 class FavouriteFragment : Fragment() {
@@ -66,7 +67,7 @@ class FavouriteFragment : Fragment() {
 
 
         val favoriteAdapter = FavouriteAdapter(favoritesList, { recipe ->
-                showDialog(recipe)
+               showDialog(this, "Remove ${recipe.strMeal}", {onRemoveClick(this, recipe)}, {})
 
         },
             { recipeString -> onShowMoreClick(this, recipeString)
@@ -101,34 +102,4 @@ class FavouriteFragment : Fragment() {
         viewModel.fetchFavourites()
     }
 
-
-    private fun showDialog(recipe: FavoriteRecipe) {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.confirmation_dialog)
-
-        val message: TextView = dialog.findViewById(R.id.dialogMessage)
-        message.text = "Remove ${recipe.strMeal} "
-
-
-        val yesBtn: MaterialButton = dialog.findViewById(R.id.btnConfirm)
-        yesBtn.setOnClickListener {
-            onRemoveClick(this, recipe)
-            dialog.dismiss()
-        }
-
-        val noBtn: Button = dialog.findViewById(R.id.btnCancel)
-        noBtn.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.show()
-
-        // 🔥 Force dialog width to match parent
-        dialog.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    }
 }

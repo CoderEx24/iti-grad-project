@@ -16,6 +16,7 @@ import com.example.iti_grad_project.data.remote.IngredientResponse
 import com.example.iti_grad_project.data.remote.Meal
 import com.example.iti_grad_project.data.remote.RecipeApiService
 import com.example.iti_grad_project.repositories.RecipeRepository
+import com.example.iti_grad_project.utils.ERROR_TAG
 import kotlinx.coroutines.launch
 
 data class SearchUiState(
@@ -39,7 +40,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
             val response = repo.getAllCategories()
             response
         } catch (e: Exception) {
-            Log.i("ERROR", "fetchRecipes: ${e.message}")
+            Log.i(ERROR_TAG, "fetchRecipes: ${e.message}")
             CategoryResponse(emptyList())
         }
     }
@@ -50,7 +51,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
                 val response = repo.getAllIngredients()
                 response
             } catch (e: Exception) {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
                 IngredientResponse(emptyList())
             }
 
@@ -61,7 +62,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
                 val response = repo.getAllAreas()
                 response
             } catch (e: Exception) {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
                 AreaResponse(emptyList())
             }
     }
@@ -77,7 +78,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
                 filtersData.postValue(filtersUiState)
                 Log.i("FILTERS", "getAllFilters: ${filtersData.value}")
             } catch (e: Exception) {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
             }
         }
     }
@@ -94,7 +95,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
             }
         }
     }
@@ -107,7 +108,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
             }
         }
     }
@@ -119,7 +120,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
             }
         }
     }
@@ -132,7 +133,7 @@ class SearchViewModel(var repo: RecipeRepository): ViewModel() {
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
             }
         }
     }

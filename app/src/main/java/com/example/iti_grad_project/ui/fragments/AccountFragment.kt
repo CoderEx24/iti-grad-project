@@ -29,6 +29,7 @@ import com.example.iti_grad_project.data.prefs.PreferenceManager
 import com.example.iti_grad_project.ui.activities.AuthActivity
 import com.example.iti_grad_project.ui.viewmodels.AuthViewModel
 import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
+import com.example.iti_grad_project.utils.showDialog
 import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -106,12 +107,14 @@ class AccountFragment : Fragment() {
         }
 
         signOut.setOnClickListener {
-            prefManager.setLoggedIn(false)
-            prefManager.setUsername("")
+            showDialog(this, "Signing out", {prefManager.setLoggedIn(false)
+                prefManager.setUsername("")
 
-            val intent = Intent(requireContext(), AuthActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+                val intent = Intent(requireContext(), AuthActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()},
+                {})
+
         }
 
         lifecycleScope.launch {

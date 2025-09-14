@@ -19,6 +19,7 @@ import com.example.iti_grad_project.data.remote.RecipeApiImp
 import com.example.iti_grad_project.data.remote.RecipeApiService
 import com.example.iti_grad_project.data.remote.RecipeResponse
 import com.example.iti_grad_project.repositories.AuthRepository
+import com.example.iti_grad_project.utils.ERROR_TAG
 import kotlinx.coroutines.launch
 
 data class HomeUiState(
@@ -60,7 +61,7 @@ class HomeViewModel(var repo: RecipeRepository): ViewModel() {
             }
             catch(e: Exception)
             {
-                Log.i("ERROR", "fetchRecipes: ${e.message} ")
+                Log.i(ERROR_TAG, "fetchRecipes: ${e.message} ")
                 // If error, still emit something so observers fire
                 val meal = existingMeal ?: Meal("","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","")
                 apiData.postValue(
