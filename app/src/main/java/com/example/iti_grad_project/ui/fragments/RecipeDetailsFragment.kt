@@ -30,6 +30,7 @@ import com.example.iti_grad_project.ui.viewmodels.FavouriteViewModel
 import com.example.iti_grad_project.ui.viewmodels.RecipeDetailsViewModel
 import com.example.iti_grad_project.utils.ERROR_TAG
 import kotlinx.coroutines.launch
+import com.example.iti_grad_project.utils.showDialog
 
 class RecipeDetailsFragment : Fragment() {
 
@@ -114,6 +115,7 @@ class RecipeDetailsFragment : Fragment() {
         catch (e: IllegalArgumentException){
             Log.i(ERROR_TAG, "onViewCreated: ${e.message}")
         }
+        
 
     }
 
@@ -181,15 +183,27 @@ class RecipeDetailsFragment : Fragment() {
 
 
                 btnAddToFav.setOnClickListener {
-                    isFavorite = !isFavorite
-                    if (isFavorite) {
+                    if (!isFavorite) {
+                        // Add without confirmation
+                        isFavorite = true
                         btnAddToFav.imageTintList = null
                         favViewModel.addFavourite(recipe)
                     } else {
-                        btnAddToFav.imageTintList = ColorStateList.valueOf(
-                            ContextCompat.getColor(requireContext(), R.color.light_gray)
+                        // Ask confirmation before removing
+                        showDialog(
+                            this@RecipeDetailsFragment,
+                            "Remove ${meal.strMeal}",
+                            onConfirm = {
+                                isFavorite = false
+                                btnAddToFav.imageTintList = ColorStateList.valueOf(
+                                    ContextCompat.getColor(requireContext(), R.color.light_gray)
+                                )
+                                favViewModel.removeFavourite(recipe)
+                            },
+                            onCancel = {
+                                // Do nothing, keep as favourite
+                            }
                         )
-                        favViewModel.removeFavourite(recipe)
                     }
                 }
             }
