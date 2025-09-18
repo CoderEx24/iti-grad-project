@@ -38,6 +38,7 @@ fun showDialog(
     val dialog = Dialog(fragment.requireContext())
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
     dialog.setCancelable(false)
+    dialog.setCanceledOnTouchOutside(true)
     dialog.setContentView(R.layout.confirmation_dialog)
 
     val message: TextView = dialog.findViewById(R.id.dialogMessage)
